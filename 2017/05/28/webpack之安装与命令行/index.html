@@ -99,7 +99,8 @@
 <meta property="og:description" content="webpack简介webpack是一个代码打包器，依附于NPM平台。在前端领域，所谓的代码打包，即是将所有模块化后的代码打包到一个JS文件中，HTML中只需引入这个打包后的文件即可，实际在浏览器中运行的也是这一个文件。 除了对JS文件进行打包之外，还可以对其他的非JS文件进行打包，如打包后的CSS引入JS文件中。 当然除了打包这一功能之外，webpack还有其他的功能。在模块化上，它支持Commo">
 <meta property="og:image" content="http://i.imgur.com/hOLORcP.png">
 <meta property="og:image" content="http://i.imgur.com/ibqG1s1.png">
-<meta property="og:updated_time" content="2017-05-28T03:11:33.927Z">
+<meta property="og:image" content="http://i.imgur.com/Um0JMiH.png">
+<meta property="og:updated_time" content="2017-05-28T07:09:16.495Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="webpack之安装与命令行">
 <meta name="twitter:description" content="webpack简介webpack是一个代码打包器，依附于NPM平台。在前端领域，所谓的代码打包，即是将所有模块化后的代码打包到一个JS文件中，HTML中只需引入这个打包后的文件即可，实际在浏览器中运行的也是这一个文件。 除了对JS文件进行打包之外，还可以对其他的非JS文件进行打包，如打包后的CSS引入JS文件中。 当然除了打包这一功能之外，webpack还有其他的功能。在模块化上，它支持Commo">
@@ -316,9 +317,9 @@
             
             <span class="post-letters-count">
               &nbsp; | &nbsp;
-              <span>343 字</span>
+              <span>659 字</span>
               &nbsp; | &nbsp;
-              <span>1 min</span>
+              <span>3 min</span>
             </span>
           
           </span>
@@ -387,7 +388,76 @@
 <pre><code>npm install webpack --save-dev
 </code></pre><p>安装完成之后，与webpack相关的依赖将会存放在工程根目录下的node_modules文件夹中</p>
 <h3 id="安装完成"><a href="#安装完成" class="headerlink" title="安装完成"></a>安装完成</h3><p>至此，在当前工程下的webpack环境就安装完成。</p>
-<h2 id="webpack命令"><a href="#webpack命令" class="headerlink" title="webpack命令"></a>webpack命令</h2>
+<h2 id="webpack命令"><a href="#webpack命令" class="headerlink" title="webpack命令"></a>webpack命令</h2><h3 id="webpack打包"><a href="#webpack打包" class="headerlink" title="webpack打包"></a>webpack打包</h3><ol>
+<li><p>在根目录下新建文件hello.js</p>
+<pre><code>import &apos;./world.js&apos;
+
+function hello(str) {
+    alert(str);
+}
+
+hello(&apos;Test Webpack&apos;)
+</code></pre></li>
+<li><p>在根目录下新建文件world.js</p>
+<pre><code>function world() {
+    return {
+
+    }
+}
+</code></pre></li>
+<li><p>在CMD中执行命令</p>
+<pre><code>webpack hello.js hello.bundle.js
+</code></pre></li>
+</ol>
+<p>执行上述操作后，即可将hello.js和与之关联的文件进行打包，打包文件为hello.bundle.js，这个bundle文件存放在工程的根目录下；</p>
+<ol>
+<li><p>通过HTML文件对之进行引用，新建index.html,对hello.bundle.js进行引用</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Demo&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;webpack&lt;/h1&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;hello.bundle.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre></li>
+</ol>
+<p>打开网页后，在浏览器中就会有一个“Test Webpack”的alert。<br><img src="http://i.imgur.com/Um0JMiH.png" alt=""></p>
+<h3 id="webpack打包CSS"><a href="#webpack打包CSS" class="headerlink" title="webpack打包CSS"></a>webpack打包CSS</h3><ol>
+<li><p>新建样式文件style.css</p>
+<p> body {</p>
+<pre><code>    background: red;
+}
+</code></pre></li>
+<li><p>引入需要的依赖</p>
+<p> // 在CMD中<br> npm install style-loader css-loader</p>
+</li>
+<li><p>引入CSS文件</p>
+<ol>
+<li><p>在hello.js中引入</p>
+<pre><code>import &apos;style-loader!css-loader!./style.css&apos;;
+</code></pre></li>
+<li><p>CMD中加载</p>
+<ol>
+<li><p>hello.js</p>
+<pre><code>import &apos;./style.css&apos;;
+</code></pre></li>
+<li><p>CMD命令中</p>
+<pre><code>webpack hello.js hello.bundle.js --module-bind &quot;css=style-loader!css-loader&quot;
+</code></pre></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="热部署"><a href="#热部署" class="headerlink" title="热部署"></a>热部署</h3><pre><code>webpack hello.js hello.bundle.js --watch
+</code></pre><h3 id="观察打包过程"><a href="#观察打包过程" class="headerlink" title="观察打包过程"></a>观察打包过程</h3><pre><code>webpack hello.js hello.bundle.js --progess
+</code></pre><h3 id="列出所有打包的模块-包括处理方式"><a href="#列出所有打包的模块-包括处理方式" class="headerlink" title="列出所有打包的模块(包括处理方式)"></a>列出所有打包的模块(包括处理方式)</h3><pre><code>webpack hello.js hello.bundle.js --display-modules
+</code></pre><h3 id="加载模块的原因"><a href="#加载模块的原因" class="headerlink" title="加载模块的原因"></a>加载模块的原因</h3><pre><code>webpack hello.js hello.bundle.js  --display-reasons
+</code></pre>
       
     </div>
 
@@ -441,22 +511,6 @@
         
       
 
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/05/14/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-          </div>
-        </div>
       
 
       
@@ -524,7 +578,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">1</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -610,7 +664,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack简介"><span class="nav-number">1.</span> <span class="nav-text">webpack简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack代码的编写"><span class="nav-number">2.</span> <span class="nav-text">webpack代码的编写</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#新建工程webpack-test"><span class="nav-number">2.1.</span> <span class="nav-text">新建工程webpack-test</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#利用npm初始化整个工程"><span class="nav-number">2.2.</span> <span class="nav-text">利用npm初始化整个工程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装webpack"><span class="nav-number">2.3.</span> <span class="nav-text">安装webpack</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装完成"><span class="nav-number">2.4.</span> <span class="nav-text">安装完成</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack命令"><span class="nav-number">3.</span> <span class="nav-text">webpack命令</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack简介"><span class="nav-number">1.</span> <span class="nav-text">webpack简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack代码的编写"><span class="nav-number">2.</span> <span class="nav-text">webpack代码的编写</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#新建工程webpack-test"><span class="nav-number">2.1.</span> <span class="nav-text">新建工程webpack-test</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#利用npm初始化整个工程"><span class="nav-number">2.2.</span> <span class="nav-text">利用npm初始化整个工程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装webpack"><span class="nav-number">2.3.</span> <span class="nav-text">安装webpack</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装完成"><span class="nav-number">2.4.</span> <span class="nav-text">安装完成</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack命令"><span class="nav-number">3.</span> <span class="nav-text">webpack命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#webpack打包"><span class="nav-number">3.1.</span> <span class="nav-text">webpack打包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#webpack打包CSS"><span class="nav-number">3.2.</span> <span class="nav-text">webpack打包CSS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#热部署"><span class="nav-number">3.3.</span> <span class="nav-text">热部署</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#观察打包过程"><span class="nav-number">3.4.</span> <span class="nav-text">观察打包过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列出所有打包的模块-包括处理方式"><span class="nav-number">3.5.</span> <span class="nav-text">列出所有打包的模块(包括处理方式)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加载模块的原因"><span class="nav-number">3.6.</span> <span class="nav-text">加载模块的原因</span></a></li></ol></li></ol></div>
             
 
           </div>
