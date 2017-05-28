@@ -273,6 +273,243 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/28/纯CSS美化单选框与复选框/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="赵波">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://tva3.sinaimg.cn/crop.0.0.512.512.180/6a53d026jw8f03tm6trj7j20e80e8jrr.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="赵波的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/05/28/纯CSS美化单选框与复选框/" itemprop="url">纯CSS美化单选框与复选框</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-28T22:15:47+08:00">
+                2017-05-28
+              </time>
+            
+
+            
+
+            
+            
+            <span class="post-letters-count">
+              &nbsp; | &nbsp;
+              <span>748 字</span>
+              &nbsp; | &nbsp;
+              <span>3 min</span>
+            </span>
+          
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>之前在开发的过程中也遇到过改变单选框与复选框样式的问题，但就是自己懒，忙于赶进度，这些方面就没有进一步的去优化它。结果不久前面试的时候被问到这个问题，果不其然没有回答上来。所以刚才研究了一下，写了一个小栗子来实现这个功能。</p>
+</blockquote>
+<h3 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h3><p>原生的radio和checkbox长这样<br><img src="http://i.imgur.com/UGQuoYF.png" alt=""></p>
+<p>样式美化后的radio和checkbox长成了这样<br><img src="http://i.imgur.com/MiOhTkW.png" alt=""></p>
+<h3 id="HTML部分"><a href="#HTML部分" class="headerlink" title="HTML部分"></a>HTML部分</h3><p>这里没什么好说的，直接贴代码</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;css/style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;label for=&quot;cd&quot;&gt;&lt;input id=&quot;cd&quot; type=&quot;radio&quot; name=&quot;city&quot; class=&quot;radio&quot;&gt;成都&lt;/label&gt;
+    &lt;label for=&quot;hz&quot;&gt;&lt;input id=&quot;hz&quot; type=&quot;radio&quot; name=&quot;city&quot; class=&quot;radio&quot;&gt;杭州&lt;/label&gt;
+    &lt;hr&gt;
+    &lt;label for=&quot;asus&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;checkbox&quot; id=&quot;asus&quot;&gt;华硕&lt;/label&gt;
+    &lt;label for=&quot;app&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;checkbox&quot; id=&quot;app&quot;&gt;苹果&lt;/label&gt;
+    &lt;label for=&quot;hw&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;checkbox&quot; id=&quot;hw&quot;&gt;华为&lt;/label&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h3 id="CSS部分"><a href="#CSS部分" class="headerlink" title="CSS部分"></a>CSS部分</h3><ol>
+<li><p>在开始书写CSS代码之前，这里要科普两个CSS3新属性，分别是background-clip和appearance。</p>
+<ol>
+<li><p>background-clip</p>
+<p> 这个属性代表background所能覆盖的范围，我们都知道，默认情况下，background在盒模型中覆盖的区域是content + padding + border（IE是content + padding），所以就引出了background-clip这个属性的三个值——</p>
+<p> content-box:背景被裁剪到边框盒。</p>
+<p> padding-box:背景被裁剪到内边距框。</p>
+<p> border-box: 背景被裁剪到内容框。（默认）</p>
+</li>
+<li><p>appearance</p>
+<p> 这个属性在所有的浏览器中都不被支持，但是可以通过私有前缀在Firefox和Chrome中使用（-moz-appearance与-webkit-appearance）。它的作用是使元素看起来像标准的用户界面。</p>
+<p> normal    将元素呈现为常规元素。</p>
+<p> icon    将元素呈现为图标（小图片）。</p>
+<p> window    将元素呈现为视口。</p>
+<p> button    将元素呈现为按钮。</p>
+<p> menu    将元素呈现为一套供用户选择的选项。</p>
+<p> field    将元素呈现为输入字段。</p>
+<p> ps: -webkit-appearance: none /<em>隐藏元素的默认显示</em>/</p>
+</li>
+</ol>
+</li>
+<li><p>自定义checkbox与radio样式的思想就是让元素默认的样式隐藏，然后通过border、background、定width/height的方式定义自己的样式，代码及详细注释如下</p>
+<pre><code>/*清除outline，使其垂直top对齐*/
+input {
+    outline: none;
+    vertical-align: top;
+}
+
+.radio,.checkbox {
+    /*定宽高*/
+    width: 1.2rem;
+    height: 1.2rem;
+    /*保留border-color，背景色仅覆盖到padding*/
+    background-clip: padding-box;
+    border: 1px solid grey;
+    /*消除input的默认样式*/
+    -webkit-appearance: none;
+    /*使后面的“勾”相对其决定定位*/
+    position: relative;
+}
+
+.radio {
+    /*radio当然是圆的*/
+    border-radius: 50%;
+}
+
+.radio:checked,.checkbox:checked {
+    /*定义被选中时的背景色*/
+    background-color: #04c9e8;
+}
+
+/*通过before伪元素定义“勾”的样式*/
+.radio:checked:before,.checkbox:checked:before {
+    content: &quot;&quot;;
+    /*四方居中*/
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -0.25rem;
+    margin-top: -0.25rem;
+
+    border: 1px solid #fff;
+    /*消除top与right方向的border，使其显示为“勾”*/
+    border-top: none;
+    border-right: none;
+
+    width: 0.5rem;
+    height: 0.3rem;
+
+    /*旋转，使其显示为“勾”*/
+    transform: rotate(-45deg);
+}
+</code></pre></li>
+</ol>
+<p>需要查看Demo网页请点击<a href="&quot;http://iamzhaobo.coding.me/radioCheckboxCSS/&quot;">这里</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/28/webpack之安装与命令行/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -528,7 +765,7 @@ hello(&apos;Test Webpack&apos;)
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -539,7 +776,7 @@ hello(&apos;Test Webpack&apos;)
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -550,7 +787,7 @@ hello(&apos;Test Webpack&apos;)
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
