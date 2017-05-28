@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Webpack," />
+  <meta name="keywords" content="webpack," />
 
 
 
@@ -90,17 +90,20 @@
 
 
 
-<meta name="description" content="webpackkkk">
-<meta name="keywords" content="Webpack">
+<meta name="description" content="webpack简介webpack是一个代码打包器，依附于NPM平台。在前端领域，所谓的代码打包，即是将所有模块化后的代码打包到一个JS文件中，HTML中只需引入这个打包后的文件即可，实际在浏览器中运行的也是这一个文件。 除了对JS文件进行打包之外，还可以对其他的非JS文件进行打包，如打包后的CSS引入JS文件中。 当然除了打包这一功能之外，webpack还有其他的功能。在模块化上，它支持Commo">
+<meta name="keywords" content="webpack">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Webpack之命令行">
-<meta property="og:url" content="http://yoursite.com/2017/05/28/Webpack之命令行/index.html">
+<meta property="og:title" content="webpack之安装与命令行">
+<meta property="og:url" content="http://yoursite.com/2017/05/28/webpack之安装与命令行/index.html">
 <meta property="og:site_name" content="赵波的博客">
-<meta property="og:description" content="webpackkkk">
-<meta property="og:updated_time" content="2017-05-28T02:42:33.149Z">
+<meta property="og:description" content="webpack简介webpack是一个代码打包器，依附于NPM平台。在前端领域，所谓的代码打包，即是将所有模块化后的代码打包到一个JS文件中，HTML中只需引入这个打包后的文件即可，实际在浏览器中运行的也是这一个文件。 除了对JS文件进行打包之外，还可以对其他的非JS文件进行打包，如打包后的CSS引入JS文件中。 当然除了打包这一功能之外，webpack还有其他的功能。在模块化上，它支持Commo">
+<meta property="og:image" content="http://i.imgur.com/hOLORcP.png">
+<meta property="og:image" content="http://i.imgur.com/ibqG1s1.png">
+<meta property="og:updated_time" content="2017-05-28T03:11:33.927Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Webpack之命令行">
-<meta name="twitter:description" content="webpackkkk">
+<meta name="twitter:title" content="webpack之安装与命令行">
+<meta name="twitter:description" content="webpack简介webpack是一个代码打包器，依附于NPM平台。在前端领域，所谓的代码打包，即是将所有模块化后的代码打包到一个JS文件中，HTML中只需引入这个打包后的文件即可，实际在浏览器中运行的也是这一个文件。 除了对JS文件进行打包之外，还可以对其他的非JS文件进行打包，如打包后的CSS引入JS文件中。 当然除了打包这一功能之外，webpack还有其他的功能。在模块化上，它支持Commo">
+<meta name="twitter:image" content="http://i.imgur.com/hOLORcP.png">
 
 
 
@@ -128,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/05/28/Webpack之命令行/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/05/28/webpack之安装与命令行/"/>
 
 
 
 
 
-  <title>Webpack之命令行 | 赵波的博客</title>
+  <title>webpack之安装与命令行 | 赵波的博客</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -273,7 +276,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/28/Webpack之命令行/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/28/webpack之安装与命令行/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="赵波">
@@ -290,7 +293,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Webpack之命令行</h1>
+          <h1 class="post-title" itemprop="name headline">webpack之安装与命令行</h1>
         
 
         <div class="post-meta">
@@ -313,7 +316,7 @@
             
             <span class="post-letters-count">
               &nbsp; | &nbsp;
-              <span>1 字</span>
+              <span>343 字</span>
               &nbsp; | &nbsp;
               <span>1 min</span>
             </span>
@@ -372,7 +375,19 @@
       
 
       
-        <h2 id="webpackkkk"><a href="#webpackkkk" class="headerlink" title="webpackkkk"></a>webpackkkk</h2>
+        <h2 id="webpack简介"><a href="#webpack简介" class="headerlink" title="webpack简介"></a>webpack简介</h2><p>webpack是一个代码打包器，依附于NPM平台。在前端领域，所谓的代码打包，即是将所有模块化后的代码打包到一个JS文件中，HTML中只需引入这个打包后的文件即可，实际在浏览器中运行的也是这一个文件。</p>
+<p>除了对JS文件进行打包之外，还可以对其他的非JS文件进行打包，如打包后的CSS引入JS文件中。</p>
+<p>当然除了打包这一功能之外，webpack还有其他的功能。在模块化上，它支持CommonJS、AMD、CMD、ES6多种模块化方式，并且可以在一个功能中混用。依附于webpack同样有相当多的插件，用来实现网页的热部署，利用babel来讲ES6转ES5等。</p>
+<p>接下来，将介绍webpack的简单使用与相关命令。</p>
+<h2 id="webpack代码的编写"><a href="#webpack代码的编写" class="headerlink" title="webpack代码的编写"></a>webpack代码的编写</h2><h3 id="新建工程webpack-test"><a href="#新建工程webpack-test" class="headerlink" title="新建工程webpack-test"></a>新建工程webpack-test</h3><p><img src="http://i.imgur.com/hOLORcP.png" alt=""></p>
+<h3 id="利用npm初始化整个工程"><a href="#利用npm初始化整个工程" class="headerlink" title="利用npm初始化整个工程"></a>利用npm初始化整个工程</h3><p>在CMD中</p>
+<pre><code>npm init // 命令行中与填写的字段全部Enter跳过
+</code></pre><p>之后，即可在工程根目录下生成package.json文件<br><img src="http://i.imgur.com/ibqG1s1.png" alt=""></p>
+<h3 id="安装webpack"><a href="#安装webpack" class="headerlink" title="安装webpack"></a>安装webpack</h3><p>在CMD中</p>
+<pre><code>npm install webpack --save-dev
+</code></pre><p>安装完成之后，与webpack相关的依赖将会存放在工程根目录下的node_modules文件夹中</p>
+<h3 id="安装完成"><a href="#安装完成" class="headerlink" title="安装完成"></a>安装完成</h3><p>至此，在当前工程下的webpack环境就安装完成。</p>
+<h2 id="webpack命令"><a href="#webpack命令" class="headerlink" title="webpack命令"></a>webpack命令</h2>
       
     </div>
 
@@ -417,7 +432,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Webpack/" rel="tag"># Webpack</a>
+            <a href="/tags/webpack/" rel="tag"># webpack</a>
           
         </div>
       
@@ -595,7 +610,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#webpackkkk"><span class="nav-number">1.</span> <span class="nav-text">webpackkkk</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack简介"><span class="nav-number">1.</span> <span class="nav-text">webpack简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack代码的编写"><span class="nav-number">2.</span> <span class="nav-text">webpack代码的编写</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#新建工程webpack-test"><span class="nav-number">2.1.</span> <span class="nav-text">新建工程webpack-test</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#利用npm初始化整个工程"><span class="nav-number">2.2.</span> <span class="nav-text">利用npm初始化整个工程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装webpack"><span class="nav-number">2.3.</span> <span class="nav-text">安装webpack</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装完成"><span class="nav-number">2.4.</span> <span class="nav-text">安装完成</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack命令"><span class="nav-number">3.</span> <span class="nav-text">webpack命令</span></a></li></ol></div>
             
 
           </div>
