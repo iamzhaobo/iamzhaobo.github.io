@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="sass,compass," />
+  <meta name="keywords" content="CSS,HTML,BootStrap,栅格式布局," />
 
 
 
@@ -90,17 +90,20 @@
 
 
 
-<meta name="description" content="以前也了解过一点点的SASS、LESS方面的知识，但是基本限于只能定义个变量，写个嵌套这个程度，况且之前还不知有Compass这个逆天神器的存在。如今，在新同事的引导下，整个项目的页面完全是由Sass + Compass这种模式来开发的，这是一种完全不一样的开发模式，特别是Compass的存在，使得页面的开发进入了工程化、模块化的新阶段。  简介限于笔者对SASS与Compass的理论掌握也只是">
-<meta name="keywords" content="sass,compass">
+<meta name="description" content="以前写网页几乎没有考虑到屏幕大小的问题，都是按照设计稿写死的布局，一般最常见的就是header &amp;amp; footer 100%，中间定宽的这种布局，只要不是屏幕太小或者过大，一般都不会出现什么问题，不过最近有项目不是这种布局，如果不针对不同的屏幕自适应的话，网页就会变得很丑，所以就借这个周末利用同事的(@liaojiajia)代码研究了一下，收获颇丰。  需求分析在width: 1024px">
+<meta name="keywords" content="CSS,HTML,BootStrap,栅格式布局">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SASS结合Compass的安装与最基本使用">
-<meta property="og:url" content="http://yoursite.com/2017/06/18/SASS结合Compass的安装与最基本使用/index.html">
+<meta property="og:title" content="栅格化布局的网页自适应">
+<meta property="og:url" content="http://yoursite.com/2017/06/25/栅格化布局的网页自适应/index.html">
 <meta property="og:site_name" content="赵波的博客">
-<meta property="og:description" content="以前也了解过一点点的SASS、LESS方面的知识，但是基本限于只能定义个变量，写个嵌套这个程度，况且之前还不知有Compass这个逆天神器的存在。如今，在新同事的引导下，整个项目的页面完全是由Sass + Compass这种模式来开发的，这是一种完全不一样的开发模式，特别是Compass的存在，使得页面的开发进入了工程化、模块化的新阶段。  简介限于笔者对SASS与Compass的理论掌握也只是">
-<meta property="og:updated_time" content="2017-06-18T15:27:14.723Z">
+<meta property="og:description" content="以前写网页几乎没有考虑到屏幕大小的问题，都是按照设计稿写死的布局，一般最常见的就是header &amp;amp; footer 100%，中间定宽的这种布局，只要不是屏幕太小或者过大，一般都不会出现什么问题，不过最近有项目不是这种布局，如果不针对不同的屏幕自适应的话，网页就会变得很丑，所以就借这个周末利用同事的(@liaojiajia)代码研究了一下，收获颇丰。  需求分析在width: 1024px">
+<meta property="og:image" content="https://ooo.0o0.ooo/2017/06/26/594fe0787b396.png">
+<meta property="og:image" content="https://ooo.0o0.ooo/2017/06/26/594fe0aeb56b2.png">
+<meta property="og:updated_time" content="2017-06-29T15:03:17.992Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SASS结合Compass的安装与最基本使用">
-<meta name="twitter:description" content="以前也了解过一点点的SASS、LESS方面的知识，但是基本限于只能定义个变量，写个嵌套这个程度，况且之前还不知有Compass这个逆天神器的存在。如今，在新同事的引导下，整个项目的页面完全是由Sass + Compass这种模式来开发的，这是一种完全不一样的开发模式，特别是Compass的存在，使得页面的开发进入了工程化、模块化的新阶段。  简介限于笔者对SASS与Compass的理论掌握也只是">
+<meta name="twitter:title" content="栅格化布局的网页自适应">
+<meta name="twitter:description" content="以前写网页几乎没有考虑到屏幕大小的问题，都是按照设计稿写死的布局，一般最常见的就是header &amp;amp; footer 100%，中间定宽的这种布局，只要不是屏幕太小或者过大，一般都不会出现什么问题，不过最近有项目不是这种布局，如果不针对不同的屏幕自适应的话，网页就会变得很丑，所以就借这个周末利用同事的(@liaojiajia)代码研究了一下，收获颇丰。  需求分析在width: 1024px">
+<meta name="twitter:image" content="https://ooo.0o0.ooo/2017/06/26/594fe0787b396.png">
 
 
 
@@ -128,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/06/18/SASS结合Compass的安装与最基本使用/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/06/25/栅格化布局的网页自适应/"/>
 
 
 
 
 
-  <title>SASS结合Compass的安装与最基本使用 | 赵波的博客</title>
+  <title>栅格化布局的网页自适应 | 赵波的博客</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -273,7 +276,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/18/SASS结合Compass的安装与最基本使用/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/25/栅格化布局的网页自适应/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="赵波">
@@ -290,7 +293,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">SASS结合Compass的安装与最基本使用</h1>
+          <h1 class="post-title" itemprop="name headline">栅格化布局的网页自适应</h1>
         
 
         <div class="post-meta">
@@ -302,8 +305,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-18T21:56:08+08:00">
-                2017-06-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-25T23:54:54+08:00">
+                2017-06-25
               </time>
             
 
@@ -313,9 +316,9 @@
             
             <span class="post-letters-count">
               &nbsp; | &nbsp;
-              <span>821 字</span>
+              <span>1,509 字</span>
               &nbsp; | &nbsp;
-              <span>3 min</span>
+              <span>6 min</span>
             </span>
           
           </span>
@@ -373,17 +376,88 @@
 
       
         <blockquote>
-<p>以前也了解过一点点的SASS、LESS方面的知识，但是基本限于只能定义个变量，写个嵌套这个程度，况且之前还不知有Compass这个逆天神器的存在。如今，在新同事的引导下，整个项目的页面完全是由Sass + Compass这种模式来开发的，这是一种完全不一样的开发模式，特别是Compass的存在，使得页面的开发进入了工程化、模块化的新阶段。</p>
+<p>以前写网页几乎没有考虑到屏幕大小的问题，都是按照设计稿写死的布局，一般最常见的就是header &amp; footer 100%，中间定宽的这种布局，只要不是屏幕太小或者过大，一般都不会出现什么问题，不过最近有项目不是这种布局，如果不针对不同的屏幕自适应的话，网页就会变得很丑，所以就借这个周末利用同事的(@liaojiajia)代码研究了一下，收获颇丰。</p>
 </blockquote>
-<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>限于笔者对SASS与Compass的理论掌握也只是皮毛，只是在工程中有过一点实际的应用所以才对其有更深入的理解，所以下面的阐述难免有些纰漏。</p>
-<p>SASS不是一种新的语言，它只是书写CSS的一种新的方式，通过“编译器”，最终它还是会转化成CSS代码的，因为SASS并不能被HTML所解释。而这样一种新的方式，它的作用就是简化CSS的编写，同时提高整个系统的可维护性。</p>
-<p>Compass则是一个工具与一系列的“库文件”，它与SASS之间的关系就好比jQuery与JavaScript的关系，利用Compass中提供的“库”，有许多的样式都不用我们自己编写，利用SASS的语法直接引用就可以了。</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>前面提到了“编译器”的概念，而这里的“编译器”就是Ruby运行环境。</p>
-<p>在Windows上安装Ruby，首先要<a href="https://rubyinstaller.org/downloads/" target="_blank" rel="external">下载</a>RubyInstaller，这里注意选择Windows的位版本，整个安装过程都是傻瓜式的，也不需要手动配置环境变量。安装完成之后，在CMD里面<code>ruby -v</code>,如果显示有版本号，那么整个Ruby就在你的系统上安装成功了。</p>
-<p>接下来要提到一个叫gem的东西，作为一个前端，可以不知道gem，但肯定知道npm，如果不知道什么是npm，建议您打开一个新的标签页Google一下，看十几分钟再回头来看这篇文章。在我的理解中gem就是Ruby下的npm。</p>
-<p>在我们的Ruby环境安装好之后，gem也就自动安装好了，和npm类似，接下来就要配置其镜像地址<code>gem sources -a ruby.taobao.org</code>，这样就能在国内的网络下畅通的下个各个gem包。在SASS与Compas的使用上，我们需要的就是两个包，首先安装SASS，<code>gem install sass</code>，然后安装Compass，<code>gem install compass</code>，最后利用<code>sass -v</code>,<code>compass -v</code>分别测试一下SASS与Compass是否安装好，如果以前顺利，那么整个环境就已经建立成功了。</p>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>进入你想要建立工程的目录，<code>compass create myproject</code>,即可建立一个Compass工程，在这里面，你可以看到一个名为config.rb的文件，里面配置了css、js、img等资源的输入输出配置，我们可以手动修改它。</p>
-<p>在当前工程目录<code>compass compile</code>，即可编译整个工程的文件；<code>compass watch</code>，即可监听整个工程，在工程文件有变化时，可以立即改变整个工程内对应的文件。例如在sass目录下编写或者改变sass代码后，在css目录下对应的文件即会发生变化。</p>
+<h3 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h3><p>在width: 1024px的屏幕上是这样的<br><img src="https://ooo.0o0.ooo/2017/06/26/594fe0787b396.png" alt=""></p>
+<p>然后，在width: 1920px的屏幕上是这样的<br><img src="https://ooo.0o0.ooo/2017/06/26/594fe0aeb56b2.png" alt=""></p>
+<p>首先，在header与侧边栏上均没有任何变化，响应的地方都集中在了中间的content部分，为了方便表述，如1024px上呈现的图，将上面部分称为A，下面部分为B，A的三个item称为a1、a2、a3。</p>
+<p>可以看到，在1024px的状态下，A、B上下排列，A的3个item浮动，宽度大约是父级的1/3；在1920px下，A与B左右浮动，A大概占父级的1/3,A下面的3个item换行对齐排列。</p>
+<p>一直以来我都不太喜欢写响应式布局的代码，因为这需要在开发的时候考虑很多的情况，在根据不同的情况在写出不同的CSS，甚至有时候还需要改变HTML的代码。以前在学习响应式布局的时候，为了不考虑太多，就用一种非常智障的方式来写——在HTML中link样式的时候根据screen的width引入两套不同样式，所以就必须要写两套CSS，而且这两套样式中大部分代码也是重复的。</p>
+<p>众所周知BootStrap的自适应的，而且从小屏幕的手机到PC大屏幕都实现了自适应，单这肯定不是只有引用了bootstrap.css就可以自动实现的。开发者利用栅格式布局，通过对HTML添加适当的类，即可实现自适应。但是如上图展示的这张网页，引入bootstrap只是为了一个自适应的功能，未免太大材小用了，所以，利用bootstrap的这种栅格化的思想，我们自己实现了一个栅格式布局的样式库。</p>
+<h3 id="实现自己的栅格样式库"><a href="#实现自己的栅格样式库" class="headerlink" title="实现自己的栅格样式库"></a>实现自己的栅格样式库</h3><p>以下内容需要一丢丢的SASS与Compass的知识，如果你不会，那就花20分钟去看完<a href="&quot;http://iamzhaobo.coding.me/recommend_sass&quot;">这两篇文章</a>。</p>
+<p>首先新建一个_grid.scss，就在这个scss存放预留的自适应样式。首先，仿照bootstrap的栅格式布局，整个布局版面都是有行列撑起来的，一行里存在12列，列必须依附于行的父级存在。</p>
+<p>行的代码比较简单，这里的两个margin不是必须的，然后将它的盒模型设置成IE的盒模型，因为它下边的列会涉及到浮动，所有最后引用compass清除一个浮动就可以了，代码如下。</p>
+<pre><code>.row {
+  margin-right: -15px;
+  margin-left: -15px;
+  @include box-sizing(border-box);
+  @include pie-clearfix;
+}
+</code></pre><p>列的代码量就非常的大了，以下之后涉及到一些关键的部分，且只考虑992px与1200px两种屏幕宽度尺寸，列命名为col-md-x和col-lg-x，两部分代码类似，只是在媒体查询部分不一样。栅格有12列，所以x即为1-12。</p>
+<p>以大屏幕1200px为例，首先要让所以的列都向左浮动，然后十二分之一是8.33333333%，所以col-lg-x的width即为8.3333333% * x,代码如下：</p>
+<pre><code>@media (min-width: 1200px) {
+  .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
+    float: left;
+  }
+  .col-lg-12 {
+    width: 100%;
+  }
+  .col-lg-11 {
+    width: 91.66666667%;
+  }
+  .col-lg-10 {
+    width: 83.33333333%;
+  }
+  .col-lg-9 {
+    width: 75%;
+  }
+  .col-lg-8 {
+    width: 66.66666667%;
+  }
+  .col-lg-7 {
+    width: 58.33333333%;
+  }
+  .col-lg-6 {
+    width: 50%;
+  }
+  .col-lg-5 {
+    width: 41.66666667%;
+  }
+  .col-lg-4 {
+    width: 33.33333333%;
+  }
+  .col-lg-3 {
+    width: 25%;
+  }
+  .col-lg-2 {
+    width: 16.66666667%;
+  }
+  .col-lg-1 {
+    width: 8.33333333%;
+  }
+｝
+</code></pre><p>然后在小屏幕992px上的代码类似，只是需要把第一句改成<code>@media (min-width: 992px)</code>，后面的类名改为<code>col-md-x</code>。</p>
+<p>代码都一样，但是也要根据不同的屏幕尺寸写个多份，这就是自适应的实现原理所在。要想根据不同的屏幕大小自适应布局，在引用的时候，就应该给标签套上多个类，根据不同的屏幕大小，显示不同的百分比。</p>
+<pre><code>&lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-md-12 col-lg-6&quot;&gt;Hello&lt;/div&gt;
+    &lt;div class=&quot;col-md-12 col-lg-6&quot;&gt;World&lt;/div&gt;
+&lt;/div&gt;
+</code></pre><p>如上面这段最简单的自适应代码，在小屏幕（992px）上，生效的类是col-md-12，所以row内部的两个div各占width的100%，虽然它们均为左浮动，但依然如标准文档流一样上下排列。而在大屏幕（1200px）上，生效的则为col-lg-6这个类，width 50%，均左浮动，所以在这样的大屏幕上则是左右浮动的布局。</p>
+<h3 id="实现上图中的效果"><a href="#实现上图中的效果" class="headerlink" title="实现上图中的效果"></a>实现上图中的效果</h3><p>直接上代码</p>
+<pre><code>&lt;div class=&quot;main&quot;&gt;
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;col-lg-4 col-md-12&quot;&gt;
+            &lt;div class=&quot;row&quot;&gt;
+                &lt;div class=&quot;col-lg-12 col-md-4&quot;&gt;&lt;/div&gt;
+                &lt;div class=&quot;col-lg-12 col-md-4&quot;&gt;&lt;/div&gt;
+                &lt;div class=&quot;col-lg-12 col-md-4&quot;&gt;&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;col-lg-8 col-md-12&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre><p>在小屏幕小，A、B执行col-md-12,所以上下排列，A中的item，col-md-4,每个item各占1/3；在大屏幕下，A、B执行col-lg-4、col-lg-8,各占width的1/3、2/3，A中的item执行col-lg-12,所以均占父级的100%宽度。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>当然一个栅格化的代码库是不会这么简单的，这里只列举了其中最常用的一些代码，另外还有一些平移、定位之类功能，自己也正在研究。自适应是网页开发中的难点，但是随着多终端化的发展，这些技术也用的越来越多，在以后的项目中还会加深对这一块的学习。</p>
 
       
     </div>
@@ -429,9 +503,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/sass/" rel="tag"># sass</a>
+            <a href="/tags/CSS/" rel="tag"># CSS</a>
           
-            <a href="/tags/compass/" rel="tag"># compass</a>
+            <a href="/tags/HTML/" rel="tag"># HTML</a>
+          
+            <a href="/tags/BootStrap/" rel="tag"># BootStrap</a>
+          
+            <a href="/tags/栅格式布局/" rel="tag"># 栅格式布局</a>
           
         </div>
       
@@ -444,8 +522,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/28/纯CSS美化单选框与复选框/" rel="next" title="纯CSS美化单选框与复选框">
-                <i class="fa fa-chevron-left"></i> 纯CSS美化单选框与复选框
+              <a href="/2017/06/18/SASS结合Compass的安装与最基本使用/" rel="next" title="SASS结合Compass的安装与最基本使用">
+                <i class="fa fa-chevron-left"></i> SASS结合Compass的安装与最基本使用
               </a>
             
           </div>
@@ -453,10 +531,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/06/25/栅格化布局的网页自适应/" rel="prev" title="栅格化布局的网页自适应">
-                栅格化布局的网页自适应 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -613,7 +687,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用"><span class="nav-number">3.</span> <span class="nav-text">使用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#需求分析"><span class="nav-number">1.</span> <span class="nav-text">需求分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现自己的栅格样式库"><span class="nav-number">2.</span> <span class="nav-text">实现自己的栅格样式库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现上图中的效果"><span class="nav-number">3.</span> <span class="nav-text">实现上图中的效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
