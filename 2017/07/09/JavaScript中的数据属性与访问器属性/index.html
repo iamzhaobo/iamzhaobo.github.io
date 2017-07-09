@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="webpack," />
+  <meta name="keywords" content="JavaScript,面向对象," />
 
 
 
@@ -90,21 +90,21 @@
 
 
 
-<meta name="description" content="webpack简介webpack是一个代码打包器，依附于NPM平台。在前端领域，所谓的代码打包，即是将所有模块化后的代码打包到一个JS文件中，HTML中只需引入这个打包后的文件即可，实际在浏览器中运行的也是这一个文件。 除了对JS文件进行打包之外，还可以对其他的非JS文件进行打包，如打包后的CSS引入JS文件中。 当然除了打包这一功能之外，webpack还有其他的功能。在模块化上，它支持Commo">
-<meta name="keywords" content="webpack">
+<meta name="description" content="JavaScript中的对象在大多数OO的语言中都是非常容易理解的，即它就是一组散列的键值对。对它进行取值或赋值的操作都非常的简单明了。在看似简单的对象下，它还有些高级的特性。  属性属性（property）是JavaScript对象中的key，在JS的内部，用特性（attribute）来属性的各种特征，而这些高级特性，是提供给JavaScript引擎所使用的，为了与属性区分开来，一般用[[Co">
+<meta name="keywords" content="JavaScript,面向对象">
 <meta property="og:type" content="article">
-<meta property="og:title" content="webpack之安装与命令行">
-<meta property="og:url" content="http://yoursite.com/2017/05/28/webpack之安装与命令行/index.html">
+<meta property="og:title" content="JavaScript中的数据属性与访问器属性">
+<meta property="og:url" content="http://yoursite.com/2017/07/09/JavaScript中的数据属性与访问器属性/index.html">
 <meta property="og:site_name" content="赵波的博客">
-<meta property="og:description" content="webpack简介webpack是一个代码打包器，依附于NPM平台。在前端领域，所谓的代码打包，即是将所有模块化后的代码打包到一个JS文件中，HTML中只需引入这个打包后的文件即可，实际在浏览器中运行的也是这一个文件。 除了对JS文件进行打包之外，还可以对其他的非JS文件进行打包，如打包后的CSS引入JS文件中。 当然除了打包这一功能之外，webpack还有其他的功能。在模块化上，它支持Commo">
-<meta property="og:image" content="http://i.imgur.com/hOLORcP.png">
-<meta property="og:image" content="http://i.imgur.com/ibqG1s1.png">
-<meta property="og:image" content="http://i.imgur.com/Um0JMiH.png">
-<meta property="og:updated_time" content="2017-05-28T12:43:17.805Z">
+<meta property="og:description" content="JavaScript中的对象在大多数OO的语言中都是非常容易理解的，即它就是一组散列的键值对。对它进行取值或赋值的操作都非常的简单明了。在看似简单的对象下，它还有些高级的特性。  属性属性（property）是JavaScript对象中的key，在JS的内部，用特性（attribute）来属性的各种特征，而这些高级特性，是提供给JavaScript引擎所使用的，为了与属性区分开来，一般用[[Co">
+<meta property="og:image" content="http://i.imgur.com/hRsYB6i.png">
+<meta property="og:image" content="http://i.imgur.com/sS7w5Y6.png">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/006HJ39wgy1fhe2ihj22vj311y01idfr.jpg">
+<meta property="og:updated_time" content="2017-07-09T16:24:14.719Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="webpack之安装与命令行">
-<meta name="twitter:description" content="webpack简介webpack是一个代码打包器，依附于NPM平台。在前端领域，所谓的代码打包，即是将所有模块化后的代码打包到一个JS文件中，HTML中只需引入这个打包后的文件即可，实际在浏览器中运行的也是这一个文件。 除了对JS文件进行打包之外，还可以对其他的非JS文件进行打包，如打包后的CSS引入JS文件中。 当然除了打包这一功能之外，webpack还有其他的功能。在模块化上，它支持Commo">
-<meta name="twitter:image" content="http://i.imgur.com/hOLORcP.png">
+<meta name="twitter:title" content="JavaScript中的数据属性与访问器属性">
+<meta name="twitter:description" content="JavaScript中的对象在大多数OO的语言中都是非常容易理解的，即它就是一组散列的键值对。对它进行取值或赋值的操作都非常的简单明了。在看似简单的对象下，它还有些高级的特性。  属性属性（property）是JavaScript对象中的key，在JS的内部，用特性（attribute）来属性的各种特征，而这些高级特性，是提供给JavaScript引擎所使用的，为了与属性区分开来，一般用[[Co">
+<meta name="twitter:image" content="http://i.imgur.com/hRsYB6i.png">
 
 
 
@@ -132,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/05/28/webpack之安装与命令行/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/07/09/JavaScript中的数据属性与访问器属性/"/>
 
 
 
 
 
-  <title>webpack之安装与命令行 | 赵波的博客</title>
+  <title>JavaScript中的数据属性与访问器属性 | 赵波的博客</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -277,7 +277,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/28/webpack之安装与命令行/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/09/JavaScript中的数据属性与访问器属性/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="赵波">
@@ -294,7 +294,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">webpack之安装与命令行</h1>
+          <h1 class="post-title" itemprop="name headline">JavaScript中的数据属性与访问器属性</h1>
         
 
         <div class="post-meta">
@@ -306,8 +306,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-28T10:38:56+08:00">
-                2017-05-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-09T21:37:43+08:00">
+                2017-07-09
               </time>
             
 
@@ -317,9 +317,9 @@
             
             <span class="post-letters-count">
               &nbsp; | &nbsp;
-              <span>659 字</span>
+              <span>1,151 字</span>
               &nbsp; | &nbsp;
-              <span>3 min</span>
+              <span>4 min</span>
             </span>
           
           </span>
@@ -337,8 +337,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/框架/" itemprop="url" rel="index">
-                    <span itemprop="name">框架</span>
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
                   </a>
                 </span>
 
@@ -376,86 +376,81 @@
       
 
       
-        <h2 id="webpack简介"><a href="#webpack简介" class="headerlink" title="webpack简介"></a>webpack简介</h2><p>webpack是一个代码打包器，依附于NPM平台。在前端领域，所谓的代码打包，即是将所有模块化后的代码打包到一个JS文件中，HTML中只需引入这个打包后的文件即可，实际在浏览器中运行的也是这一个文件。</p>
-<p>除了对JS文件进行打包之外，还可以对其他的非JS文件进行打包，如打包后的CSS引入JS文件中。</p>
-<p>当然除了打包这一功能之外，webpack还有其他的功能。在模块化上，它支持CommonJS、AMD、CMD、ES6多种模块化方式，并且可以在一个功能中混用。依附于webpack同样有相当多的插件，用来实现网页的热部署，利用babel来讲ES6转ES5等。</p>
-<p>接下来，将介绍webpack的简单使用与相关命令。</p>
-<h2 id="webpack代码的编写"><a href="#webpack代码的编写" class="headerlink" title="webpack代码的编写"></a>webpack代码的编写</h2><h3 id="新建工程webpack-test"><a href="#新建工程webpack-test" class="headerlink" title="新建工程webpack-test"></a>新建工程webpack-test</h3><p><img src="http://i.imgur.com/hOLORcP.png" alt=""></p>
-<h3 id="利用npm初始化整个工程"><a href="#利用npm初始化整个工程" class="headerlink" title="利用npm初始化整个工程"></a>利用npm初始化整个工程</h3><p>在CMD中</p>
-<pre><code>npm init // 命令行中与填写的字段全部Enter跳过
-</code></pre><p>之后，即可在工程根目录下生成package.json文件<br><img src="http://i.imgur.com/ibqG1s1.png" alt=""></p>
-<h3 id="安装webpack"><a href="#安装webpack" class="headerlink" title="安装webpack"></a>安装webpack</h3><p>在CMD中</p>
-<pre><code>npm install webpack --save-dev
-</code></pre><p>安装完成之后，与webpack相关的依赖将会存放在工程根目录下的node_modules文件夹中</p>
-<h3 id="安装完成"><a href="#安装完成" class="headerlink" title="安装完成"></a>安装完成</h3><p>至此，在当前工程下的webpack环境就安装完成。</p>
-<h2 id="webpack命令"><a href="#webpack命令" class="headerlink" title="webpack命令"></a>webpack命令</h2><h3 id="webpack打包"><a href="#webpack打包" class="headerlink" title="webpack打包"></a>webpack打包</h3><ol>
-<li><p>在根目录下新建文件hello.js</p>
-<pre><code>import &apos;./world.js&apos;
-
-function hello(str) {
-    alert(str);
-}
-
-hello(&apos;Test Webpack&apos;)
-</code></pre></li>
-<li><p>在根目录下新建文件world.js</p>
-<pre><code>function world() {
-    return {
-
+        <blockquote>
+<p>JavaScript中的对象在大多数OO的语言中都是非常容易理解的，即它就是一组散列的键值对。对它进行取值或赋值的操作都非常的简单明了。在看似简单的对象下，它还有些高级的特性。</p>
+</blockquote>
+<h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><p>属性（property）是JavaScript对象中的key，在JS的内部，用特性（attribute）来属性的各种特征，而这些高级特性，是提供给JavaScript引擎所使用的，为了与属性区分开来，一般用<code>[[Configurable]]</code>这样两对方括号来表示它。</p>
+<p>JavaScript对象的属性有两种类型，一是数据属性，另外一种是访问器属性。</p>
+<h3 id="数据属性"><a href="#数据属性" class="headerlink" title="数据属性"></a>数据属性</h3><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>在我们编写的JavaScript代码中涉及到的属性，几乎都是数据属性。</p>
+<p>数据属性有四个特性用于描述它的特征：</p>
+<ul>
+<li>[[Configurable]]: 用于表示此属性能否被删除（delte）从而重新定义，能够修改属性的其他特性，能否把属性改为访问器属性，默认值为true;</li>
+<li>[[Enumerable]]： 表示能够通过for-in遍历出此属性，能够通过Object.keys()返回对象自身的所有可枚举的属性的键名，能否使用JSON.stringfy(),以及在ES6中能否使用Object.assign()拷贝对象，默认值为true；</li>
+<li>[[Writable]]: 表示能否修改属性的值，默认值为true；</li>
+<li>[[Value]]: 表示属性的值，默认值为undefined；</li>
+</ul>
+<p>如果需要修改某个对象的属性的特性，需要使用Object.defineProperty这个方法，它有三个参数，第一个参数是你需要修改特性的所在的对象，第二个参数是需要修改哪一个属性，第三个参数是一个对象，即为上面四个特性的值，可以只传递一部分。</p>
+<h4 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h4><pre><code>var girl = {
+name: &apos;LLXS&apos;,
+age: 23,
+job: &apos;F2E&apos;,
+desc: function() {
+    console.log(this.name)
     }
 }
-</code></pre></li>
-<li><p>在CMD中执行命令</p>
-<pre><code>webpack hello.js hello.bundle.js
-</code></pre><p> 执行上述操作后，即可将hello.js和与之关联的文件进行打包，打包文件为hello.bundle.js，这个bundle文件存放在工程的根目录下；</p>
-</li>
-<li><p>通过HTML文件对之进行引用，新建index.html,对hello.bundle.js进行引用</p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
-    &lt;title&gt;Demo&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h1&gt;webpack&lt;/h1&gt;
-    &lt;script type=&quot;text/javascript&quot; src=&quot;hello.bundle.js&quot;&gt;&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre></li>
-</ol>
-<p>打开网页后，在浏览器中就会有一个“Test Webpack”的alert。<br><img src="http://i.imgur.com/Um0JMiH.png" alt=""></p>
-<h3 id="webpack打包CSS"><a href="#webpack打包CSS" class="headerlink" title="webpack打包CSS"></a>webpack打包CSS</h3><ol>
-<li><p>新建样式文件style.css</p>
-<pre><code>body {
-    background: red;
-}
-</code></pre></li>
-<li><p>引入需要的依赖</p>
-<p> // 在CMD中<br> npm install style-loader css-loader</p>
-</li>
-<li><p>引入CSS文件</p>
-<ol>
-<li><p>在hello.js中引入</p>
-<pre><code>import &apos;style-loader!css-loader!./style.css&apos;;
-</code></pre></li>
-<li><p>CMD中加载</p>
-<ol>
-<li><p>hello.js</p>
-<pre><code>import &apos;./style.css&apos;;
-</code></pre></li>
-<li><p>CMD命令中</p>
-<pre><code>webpack hello.js hello.bundle.js --module-bind &quot;css=style-loader!css-loader&quot;
-</code></pre></li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-<h3 id="热部署"><a href="#热部署" class="headerlink" title="热部署"></a>热部署</h3><pre><code>webpack hello.js hello.bundle.js --watch
-</code></pre><h3 id="观察打包过程"><a href="#观察打包过程" class="headerlink" title="观察打包过程"></a>观察打包过程</h3><pre><code>webpack hello.js hello.bundle.js --progess
-</code></pre><h3 id="列出所有打包的模块-包括处理方式"><a href="#列出所有打包的模块-包括处理方式" class="headerlink" title="列出所有打包的模块(包括处理方式)"></a>列出所有打包的模块(包括处理方式)</h3><pre><code>webpack hello.js hello.bundle.js --display-modules
-</code></pre><h3 id="加载模块的原因"><a href="#加载模块的原因" class="headerlink" title="加载模块的原因"></a>加载模块的原因</h3><pre><code>webpack hello.js hello.bundle.js  --display-reasons
-</code></pre>
+
+Object.defineProperty(girl,&apos;name&apos;,{
+    writable: false
+})
+
+girl.name = &apos;XYY&apos;
+
+console.log(girl.name); // LLXS
+</code></pre><p>这里，通过Object.defineProperty将girl的name属性的writable特性设置成false，所以在后面即使手动修改了gril.name的值，最终在对象上并没有生效。在非严格模式下代码可以这样写，但是在严格模式下，将writable为false的属性重复赋值将会导致错误（如下图）<br><img src="http://i.imgur.com/hRsYB6i.png" alt=""><br>其他的特性也是通过这个方法来进行配置，这里就不一一赘述了。</p>
+<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><p>是浏览器环境下，undefined是window的一个属性，在浏览器中执行以下代码</p>
+<pre><code>window.undefined = &apos;define&apos;;
+console.log(undefined); // undefined
+</code></pre><p>那么，很明显undefined是一个writable为false的属性，通过getOwnPropertyDescriptor可以验证</p>
+<pre><code>var des = Object.getOwnPropertyDescriptor(window,undefined);
+console.log(des);
+</code></pre><p><img src="http://i.imgur.com/sS7w5Y6.png" alt=""></p>
+<p>从打印的结果中可以看到，window的undefined属性中value为默认的undeined，其余三个特性均为false，所以不能够对undefined重新赋值。</p>
+<p>由此，我想到通过一下代码改变undefined的特性来是之可以被赋值</p>
+<pre><code>Object.defineProperty(window,undefined,{
+    configurable: true,
+    writable: true
+})
+window.undefined = &apos;define&apos;;
+console.log(undefined)
+</code></pre><p>结果</p>
+<p><img src="http://ww4.sinaimg.cn/large/006HJ39wgy1fhe2ihj22vj311y01idfr.jpg" alt=""></p>
+<p>根据这里的提示，JavaScript为了安全，并不允许我们对undefined的特性进行重定义，所以就没有办法对undefined进行重新的赋值了。</p>
+<h3 id="访问器属性"><a href="#访问器属性" class="headerlink" title="访问器属性"></a>访问器属性</h3><h4 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h4><p>访问器属性不能直接定义，必须使用 Object.defineProperty() 来定义。它也有四个特性，其他两个与数据属性相同，如下：</p>
+<ul>
+<li>[[Configurable]]: 用于表示此属性能否被删除（delte）从而重新定义，能够修改属性的其他特性，能否把属性改为访问器属性，默认值为true;</li>
+<li>[[Enumerable]]： 表示能够通过for-in遍历出此属性，能够通过Object.keys()返回对象自身的所有可枚举的属性的键名，能否使用JSON.stringfy(),以及在ES6中能否使用Object.assign()拷贝对象，默认值为true；</li>
+<li>[[Get]]: 在读取属性时调用的函数。默认值为undefined；</li>
+<li>[[Set]]: 在写入属性时调用的函数。默认值为undefined；</li>
+</ul>
+<h4 id="实践-1"><a href="#实践-1" class="headerlink" title="实践"></a>实践</h4><pre><code>var book = {
+    _year: 2004,
+    edition: 1
+};
+Object.defineProperty(book, &quot;year&quot;, {
+    get: function () {
+        return this._year;
+    },
+    set: function (newValue) {
+        if (newValue &gt; 2004) {
+            this._year = newValue;
+            this.edition += newValue - 2004;
+        }
+    }
+});
+book.year = 2005;
+console.log(book.edition);//2
+</code></pre><p>_year是只能通过对象属性访问的属性。而访问器属性year则包含一个getter函数和一个setter函数。getter函数返回_year的值，setter函数通过计算来确定正确的版本。这是使用访问器属性的常见方式，即设置一个属性的值会导致其他属性发生变化。需要注意的是，访问器属性是 ECMA 标准定义的属性类型，是用来实现 Javascript 引擎本身使用的，因此不建议开发者使用访问器属性。</p>
+
       
     </div>
 
@@ -500,7 +495,9 @@ hello(&apos;Test Webpack&apos;)
       
         <div class="post-tags">
           
-            <a href="/tags/webpack/" rel="tag"># webpack</a>
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+            <a href="/tags/面向对象/" rel="tag"># 面向对象</a>
           
         </div>
       
@@ -513,15 +510,15 @@ hello(&apos;Test Webpack&apos;)
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/06/25/栅格化布局的网页自适应/" rel="next" title="栅格化布局的网页自适应">
+                <i class="fa fa-chevron-left"></i> 栅格化布局的网页自适应
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/05/28/纯CSS美化单选框与复选框/" rel="prev" title="纯CSS美化单选框与复选框">
-                纯CSS美化单选框与复选框 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -678,7 +675,7 @@ hello(&apos;Test Webpack&apos;)
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack简介"><span class="nav-number">1.</span> <span class="nav-text">webpack简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack代码的编写"><span class="nav-number">2.</span> <span class="nav-text">webpack代码的编写</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#新建工程webpack-test"><span class="nav-number">2.1.</span> <span class="nav-text">新建工程webpack-test</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#利用npm初始化整个工程"><span class="nav-number">2.2.</span> <span class="nav-text">利用npm初始化整个工程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装webpack"><span class="nav-number">2.3.</span> <span class="nav-text">安装webpack</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装完成"><span class="nav-number">2.4.</span> <span class="nav-text">安装完成</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack命令"><span class="nav-number">3.</span> <span class="nav-text">webpack命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#webpack打包"><span class="nav-number">3.1.</span> <span class="nav-text">webpack打包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#webpack打包CSS"><span class="nav-number">3.2.</span> <span class="nav-text">webpack打包CSS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#热部署"><span class="nav-number">3.3.</span> <span class="nav-text">热部署</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#观察打包过程"><span class="nav-number">3.4.</span> <span class="nav-text">观察打包过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列出所有打包的模块-包括处理方式"><span class="nav-number">3.5.</span> <span class="nav-text">列出所有打包的模块(包括处理方式)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加载模块的原因"><span class="nav-number">3.6.</span> <span class="nav-text">加载模块的原因</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#属性"><span class="nav-number">1.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据属性"><span class="nav-number">2.</span> <span class="nav-text">数据属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简介"><span class="nav-number">2.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实践"><span class="nav-number">2.2.</span> <span class="nav-text">实践</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用"><span class="nav-number">3.</span> <span class="nav-text">应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#访问器属性"><span class="nav-number">4.</span> <span class="nav-text">访问器属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简介-1"><span class="nav-number">4.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实践-1"><span class="nav-number">4.2.</span> <span class="nav-text">实践</span></a></li></ol></li></ol></div>
             
 
           </div>

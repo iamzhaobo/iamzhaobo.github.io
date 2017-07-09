@@ -273,6 +273,220 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/09/JavaScript中的数据属性与访问器属性/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="赵波">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://tva3.sinaimg.cn/crop.0.0.512.512.180/6a53d026jw8f03tm6trj7j20e80e8jrr.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="赵波的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/09/JavaScript中的数据属性与访问器属性/" itemprop="url">JavaScript中的数据属性与访问器属性</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-09T21:37:43+08:00">
+                2017-07-09
+              </time>
+            
+
+            
+
+            
+            
+            <span class="post-letters-count">
+              &nbsp; | &nbsp;
+              <span>1,151 字</span>
+              &nbsp; | &nbsp;
+              <span>4 min</span>
+            </span>
+          
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>JavaScript中的对象在大多数OO的语言中都是非常容易理解的，即它就是一组散列的键值对。对它进行取值或赋值的操作都非常的简单明了。在看似简单的对象下，它还有些高级的特性。</p>
+</blockquote>
+<h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><p>属性（property）是JavaScript对象中的key，在JS的内部，用特性（attribute）来属性的各种特征，而这些高级特性，是提供给JavaScript引擎所使用的，为了与属性区分开来，一般用<code>[[Configurable]]</code>这样两对方括号来表示它。</p>
+<p>JavaScript对象的属性有两种类型，一是数据属性，另外一种是访问器属性。</p>
+<h3 id="数据属性"><a href="#数据属性" class="headerlink" title="数据属性"></a>数据属性</h3><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>在我们编写的JavaScript代码中涉及到的属性，几乎都是数据属性。</p>
+<p>数据属性有四个特性用于描述它的特征：</p>
+<ul>
+<li>[[Configurable]]: 用于表示此属性能否被删除（delte）从而重新定义，能够修改属性的其他特性，能否把属性改为访问器属性，默认值为true;</li>
+<li>[[Enumerable]]： 表示能够通过for-in遍历出此属性，能够通过Object.keys()返回对象自身的所有可枚举的属性的键名，能否使用JSON.stringfy(),以及在ES6中能否使用Object.assign()拷贝对象，默认值为true；</li>
+<li>[[Writable]]: 表示能否修改属性的值，默认值为true；</li>
+<li>[[Value]]: 表示属性的值，默认值为undefined；</li>
+</ul>
+<p>如果需要修改某个对象的属性的特性，需要使用Object.defineProperty这个方法，它有三个参数，第一个参数是你需要修改特性的所在的对象，第二个参数是需要修改哪一个属性，第三个参数是一个对象，即为上面四个特性的值，可以只传递一部分。</p>
+<h4 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h4><pre><code>var girl = {
+name: &apos;LLXS&apos;,
+age: 23,
+job: &apos;F2E&apos;,
+desc: function() {
+    console.log(this.name)
+    }
+}
+
+Object.defineProperty(girl,&apos;name&apos;,{
+    writable: false
+})
+
+girl.name = &apos;XYY&apos;
+
+console.log(girl.name); // LLXS
+</code></pre><p>这里，通过Object.defineProperty将girl的name属性的writable特性设置成false，所以在后面即使手动修改了gril.name的值，最终在对象上并没有生效。在非严格模式下代码可以这样写，但是在严格模式下，将writable为false的属性重复赋值将会导致错误（如下图）<br><img src="http://i.imgur.com/hRsYB6i.png" alt=""><br>其他的特性也是通过这个方法来进行配置，这里就不一一赘述了。</p>
+<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><p>是浏览器环境下，undefined是window的一个属性，在浏览器中执行以下代码</p>
+<pre><code>window.undefined = &apos;define&apos;;
+console.log(undefined); // undefined
+</code></pre><p>那么，很明显undefined是一个writable为false的属性，通过getOwnPropertyDescriptor可以验证</p>
+<pre><code>var des = Object.getOwnPropertyDescriptor(window,undefined);
+console.log(des);
+</code></pre><p><img src="http://i.imgur.com/sS7w5Y6.png" alt=""></p>
+<p>从打印的结果中可以看到，window的undefined属性中value为默认的undeined，其余三个特性均为false，所以不能够对undefined重新赋值。</p>
+<p>由此，我想到通过一下代码改变undefined的特性来是之可以被赋值</p>
+<pre><code>Object.defineProperty(window,undefined,{
+    configurable: true,
+    writable: true
+})
+window.undefined = &apos;define&apos;;
+console.log(undefined)
+</code></pre><p>结果</p>
+<p><img src="http://ww4.sinaimg.cn/large/006HJ39wgy1fhe2ihj22vj311y01idfr.jpg" alt=""></p>
+<p>根据这里的提示，JavaScript为了安全，并不允许我们对undefined的特性进行重定义，所以就没有办法对undefined进行重新的赋值了。</p>
+<h3 id="访问器属性"><a href="#访问器属性" class="headerlink" title="访问器属性"></a>访问器属性</h3><h4 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h4><p>访问器属性不能直接定义，必须使用 Object.defineProperty() 来定义。它也有四个特性，其他两个与数据属性相同，如下：</p>
+<ul>
+<li>[[Configurable]]: 用于表示此属性能否被删除（delte）从而重新定义，能够修改属性的其他特性，能否把属性改为访问器属性，默认值为true;</li>
+<li>[[Enumerable]]： 表示能够通过for-in遍历出此属性，能够通过Object.keys()返回对象自身的所有可枚举的属性的键名，能否使用JSON.stringfy(),以及在ES6中能否使用Object.assign()拷贝对象，默认值为true；</li>
+<li>[[Get]]: 在读取属性时调用的函数。默认值为undefined；</li>
+<li>[[Set]]: 在写入属性时调用的函数。默认值为undefined；</li>
+</ul>
+<h4 id="实践-1"><a href="#实践-1" class="headerlink" title="实践"></a>实践</h4><pre><code>var book = {
+    _year: 2004,
+    edition: 1
+};
+Object.defineProperty(book, &quot;year&quot;, {
+    get: function () {
+        return this._year;
+    },
+    set: function (newValue) {
+        if (newValue &gt; 2004) {
+            this._year = newValue;
+            this.edition += newValue - 2004;
+        }
+    }
+});
+book.year = 2005;
+console.log(book.edition);//2
+</code></pre><p>_year是只能通过对象属性访问的属性。而访问器属性year则包含一个getter函数和一个setter函数。getter函数返回_year的值，setter函数通过计算来确定正确的版本。这是使用访问器属性的常见方式，即设置一个属性的值会导致其他属性发生变化。需要注意的是，访问器属性是 ECMA 标准定义的属性类型，是用来实现 Javascript 引擎本身使用的，因此不建议开发者使用访问器属性。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/25/栅格化布局的网页自适应/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1140,7 +1354,7 @@ hello(&apos;Test Webpack&apos;)
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1151,7 +1365,7 @@ hello(&apos;Test Webpack&apos;)
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1162,7 +1376,7 @@ hello(&apos;Test Webpack&apos;)
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
