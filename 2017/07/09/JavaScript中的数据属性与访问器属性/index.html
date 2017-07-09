@@ -100,7 +100,7 @@
 <meta property="og:image" content="http://i.imgur.com/hRsYB6i.png">
 <meta property="og:image" content="http://i.imgur.com/sS7w5Y6.png">
 <meta property="og:image" content="http://ww4.sinaimg.cn/large/006HJ39wgy1fhe2ihj22vj311y01idfr.jpg">
-<meta property="og:updated_time" content="2017-07-09T16:24:14.719Z">
+<meta property="og:updated_time" content="2017-07-09T16:28:23.571Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript中的数据属性与访问器属性">
 <meta name="twitter:description" content="JavaScript中的对象在大多数OO的语言中都是非常容易理解的，即它就是一组散列的键值对。对它进行取值或赋值的操作都非常的简单明了。在看似简单的对象下，它还有些高级的特性。  属性属性（property）是JavaScript对象中的key，在JS的内部，用特性（attribute）来属性的各种特征，而这些高级特性，是提供给JavaScript引擎所使用的，为了与属性区分开来，一般用[[Co">
@@ -407,7 +407,7 @@ girl.name = &apos;XYY&apos;
 
 console.log(girl.name); // LLXS
 </code></pre><p>这里，通过Object.defineProperty将girl的name属性的writable特性设置成false，所以在后面即使手动修改了gril.name的值，最终在对象上并没有生效。在非严格模式下代码可以这样写，但是在严格模式下，将writable为false的属性重复赋值将会导致错误（如下图）<br><img src="http://i.imgur.com/hRsYB6i.png" alt=""><br>其他的特性也是通过这个方法来进行配置，这里就不一一赘述了。</p>
-<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><p>是浏览器环境下，undefined是window的一个属性，在浏览器中执行以下代码</p>
+<h4 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h4><p>是浏览器环境下，undefined是window的一个属性，在浏览器中执行以下代码</p>
 <pre><code>window.undefined = &apos;define&apos;;
 console.log(undefined); // undefined
 </code></pre><p>那么，很明显undefined是一个writable为false的属性，通过getOwnPropertyDescriptor可以验证</p>
@@ -675,7 +675,7 @@ console.log(book.edition);//2
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#属性"><span class="nav-number">1.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据属性"><span class="nav-number">2.</span> <span class="nav-text">数据属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简介"><span class="nav-number">2.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实践"><span class="nav-number">2.2.</span> <span class="nav-text">实践</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用"><span class="nav-number">3.</span> <span class="nav-text">应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#访问器属性"><span class="nav-number">4.</span> <span class="nav-text">访问器属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简介-1"><span class="nav-number">4.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实践-1"><span class="nav-number">4.2.</span> <span class="nav-text">实践</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#属性"><span class="nav-number">1.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据属性"><span class="nav-number">2.</span> <span class="nav-text">数据属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简介"><span class="nav-number">2.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实践"><span class="nav-number">2.2.</span> <span class="nav-text">实践</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#应用"><span class="nav-number">2.3.</span> <span class="nav-text">应用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#访问器属性"><span class="nav-number">3.</span> <span class="nav-text">访问器属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简介-1"><span class="nav-number">3.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实践-1"><span class="nav-number">3.2.</span> <span class="nav-text">实践</span></a></li></ol></li></ol></div>
             
 
           </div>

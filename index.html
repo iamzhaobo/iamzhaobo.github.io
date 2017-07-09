@@ -402,7 +402,7 @@ girl.name = &apos;XYY&apos;
 
 console.log(girl.name); // LLXS
 </code></pre><p>这里，通过Object.defineProperty将girl的name属性的writable特性设置成false，所以在后面即使手动修改了gril.name的值，最终在对象上并没有生效。在非严格模式下代码可以这样写，但是在严格模式下，将writable为false的属性重复赋值将会导致错误（如下图）<br><img src="http://i.imgur.com/hRsYB6i.png" alt=""><br>其他的特性也是通过这个方法来进行配置，这里就不一一赘述了。</p>
-<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><p>是浏览器环境下，undefined是window的一个属性，在浏览器中执行以下代码</p>
+<h4 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h4><p>是浏览器环境下，undefined是window的一个属性，在浏览器中执行以下代码</p>
 <pre><code>window.undefined = &apos;define&apos;;
 console.log(undefined); // undefined
 </code></pre><p>那么，很明显undefined是一个writable为false的属性，通过getOwnPropertyDescriptor可以验证</p>
