@@ -1,0 +1,939 @@
+<!doctype html>
+
+
+
+
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="许多初学者乃至有一定前端编程经验的人往往也道不清JavaScript中数组的几种遍历方式，因为除了常用的几种for之外，对与另外的几种回调方法，在日常编码中使用的也比较少，这里写几个Demo，从易到难，把JavaScript中涉及到的几种数组遍历方法梳理一下。  简介JavaScript数组的遍历方法按照语法规则来分，我将它们分为两类，一类是以for、for-in、for-of为代表的for循环">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅析JavaScript数组的9种迭代方式">
+<meta property="og:url" content="http://yoursite.com/2017/07/15/浅析JavaScript数组的9种迭代方式/index.html">
+<meta property="og:site_name" content="赵波的博客">
+<meta property="og:description" content="许多初学者乃至有一定前端编程经验的人往往也道不清JavaScript中数组的几种遍历方式，因为除了常用的几种for之外，对与另外的几种回调方法，在日常编码中使用的也比较少，这里写几个Demo，从易到难，把JavaScript中涉及到的几种数组遍历方法梳理一下。  简介JavaScript数组的遍历方法按照语法规则来分，我将它们分为两类，一类是以for、for-in、for-of为代表的for循环">
+<meta property="og:image" content="http://i.imgur.com/U5BMhmn.png">
+<meta property="og:image" content="http://i.imgur.com/sdezCPn.png">
+<meta property="og:updated_time" content="2017-07-22T08:55:49.839Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="浅析JavaScript数组的9种迭代方式">
+<meta name="twitter:description" content="许多初学者乃至有一定前端编程经验的人往往也道不清JavaScript中数组的几种遍历方式，因为除了常用的几种for之外，对与另外的几种回调方法，在日常编码中使用的也比较少，这里写几个Demo，从易到难，把JavaScript中涉及到的几种数组遍历方法梳理一下。  简介JavaScript数组的遍历方法按照语法规则来分，我将它们分为两类，一类是以for、for-in、for-of为代表的for循环">
+<meta name="twitter:image" content="http://i.imgur.com/U5BMhmn.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/07/15/浅析JavaScript数组的9种迭代方式/"/>
+
+
+
+
+
+  <title>浅析JavaScript数组的9种迭代方式 | 赵波的博客</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">赵波的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/15/浅析JavaScript数组的9种迭代方式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="赵波">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://tva3.sinaimg.cn/crop.0.0.512.512.180/6a53d026jw8f03tm6trj7j20e80e8jrr.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="赵波的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">浅析JavaScript数组的9种迭代方式</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-15T00:06:46+08:00">
+                2017-07-15
+              </time>
+            
+
+            
+
+            
+            
+            <span class="post-letters-count">
+              &nbsp; | &nbsp;
+              <span>2,046 字</span>
+              &nbsp; | &nbsp;
+              <span>8 min</span>
+            </span>
+          
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-eye"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>许多初学者乃至有一定前端编程经验的人往往也道不清JavaScript中数组的几种遍历方式，因为除了常用的几种for之外，对与另外的几种回调方法，在日常编码中使用的也比较少，这里写几个Demo，从易到难，把JavaScript中涉及到的几种数组遍历方法梳理一下。</p>
+</blockquote>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>JavaScript数组的遍历方法按照语法规则来分，我将它们分为两类，一类是以for、for-in、for-of为代表的for循环，另外一类则是以forEach、map、filter等为代表的回调型遍历方法。对应前者，我们是使用的最多的，然后对于后面的几种遍历方法，可能大多数人对于他具体的运行流程，返回值等都不是很清楚。</p>
+<h3 id="for型"><a href="#for型" class="headerlink" title="for型"></a>for型</h3><h4 id="普通for循环"><a href="#普通for循环" class="headerlink" title="普通for循环"></a>普通for循环</h4><p>最简单、最典型、最常用、同时也是效率最高的for循环</p>
+<pre><code>var arr = [&apos;S&apos;,&apos;N&apos;,&apos;Q&apos;,&apos;U&apos;];
+for (let i = 0,len = arr.length; i &lt; len; i++) {
+    console.log(arr[i]); // 依次输出‘S’，‘N’，‘Q’，‘U’；
+}
+</code></pre><p>这个方式有两点需要注意的地方，第一，在ES6上，因为块作用域的原因，for循环要使用let声明变量而非var，第二，对于遍历时需要的是固定length的数据，那么就应像上述代码一样大len与i一同声明，或者将之放在for之前，因为如同<code>for(let i = 0; i &lt; arr.length; i++){}</code>这样的代码，它的执行顺序是首先执行<code>let i = 0</code>(且只会执行一次)，然后判断i &lt; arr.length是否成立，接着执行<code>{}</code>内的代码块，最后<code>i++</code>，第二次在从<code>i &lt; arr.length</code>开始执行，这样的话，每一次循环都会重新计算arr的length，相对来说消耗了更多的性能。</p>
+<h4 id="for-in"><a href="#for-in" class="headerlink" title="for-in"></a>for-in</h4><p>这一种循环方式最适合对对象进行遍历，同时也可以对数组进行遍历，不过它的效率也不高，仅仅是普通for循环的1/7。</p>
+<p>首先看它对对象的遍历</p>
+<pre><code>let dude = {
+    name: &apos;Denglei&apos;,
+    age: 22,
+    desc: function() {
+        console.log(`I&apos;m ${this.name}, and ${this.age} years old.`);
+    }
+}
+for (let key in dude) {
+    // 依次输出dude这个对象的键值对，
+    // 其中desc的value以字符串的形式打印整个函数体
+    console.log(key,dude[key])
+    if (typeof dude[key] === &apos;function&apos;) {
+        // I&apos;m Denglei, and 22 years old.
+        dude[key]();
+    }
+}
+</code></pre><p>以上述代码为例，<code>for (let key in dude)</code>，dude是我们制定的一个对象，而key则是这个对象的全部的key，在循环体中通过<code>dude[key]</code>的方式取出对象的value。</p>
+<p>for-in遍历数组</p>
+<pre><code>var arr = [&apos;S&apos;,&apos;N&apos;,&apos;Q&apos;,&apos;U&apos;];
+arr.name = &apos;PHP is the best programming language&apos;;
+Array.prototype.proAttr = &apos;prototype attrbute&apos;;
+for (let i in arr) {
+    console.log(i,arr[i])
+    console.log(typeof i)
+}
+</code></pre><p>运行结果<br><img src="http://i.imgur.com/U5BMhmn.png" alt=""></p>
+<p>在只针对<code>var arr = [&#39;S&#39;,&#39;N&#39;,&#39;Q&#39;,&#39;U&#39;]</code>这个数组的情况下，for-in数组得出的结果与遍历对象是非常类似的，i代表数组的所以，arr[i]则代码数组的值；但是，奇怪的事情发生了，在这里，i的类型居然是字符串，数组的索引怎么可能是字符串呢？但是，在JavaScript中，确实它的内部实现就是这样，数组在内存中不是存在连续的内存中，数组的索引并不是它在内存中的偏移量，但同时，我们平时是通过arr[i]（这里的i当然是一个Number），取出数组的，这又是怎么回事呢？因为JavaScript已经把i强制转换成了String类型的了，所以我们就感觉是在操作一个“真正的数组”一样。</p>
+<p>然后这里for-in把name与原型中的proAttr也遍历了出来，这就是for-in对数组不友好的地方了，因为涉及到要去原型找东西，故它的性能就这么低了，但同时，Array的length属性没有遍历出来的原因是length这个属性的特性里面enumerable是false的，当然不能遍历出来了（具体可以看我之前<a href="http://www.iamzhaobo.xyz/2017/07/09/JavaScript%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E5%B1%9E%E6%80%A7%E4%B8%8E%E8%AE%BF%E9%97%AE%E5%99%A8%E5%B1%9E%E6%80%A7/" target="_blank" rel="external">关于对象属性的文章</a>）。正是因为这个原因，ES6推出了for-of。</p>
+<p>总结就是for-in非常适用于对象，不要用在数组上。</p>
+<h3 id="回调型"><a href="#回调型" class="headerlink" title="回调型"></a>回调型</h3><p>既然将它们归为回调型，则它们共同的特定就是均要写成高阶函数传函数参的形式，这个回调的函数里有两个值<code>(item,index)</code>（除了reduce），item是当前遍历的那一个值，index则是它的索引（Number型）。</p>
+<p>上面说的是它们的相同点，对于它们的功能，返回值等都各有差异，下面通过代码进行区分。</p>
+<h4 id="forEach"><a href="#forEach" class="headerlink" title="forEach"></a>forEach</h4><pre><code>let arr = [&apos;I&apos;,&apos;am&apos;,&apos;so&apos;,&apos;busy&apos;,&apos;recently&apos;];
+arr.name = &apos;LP&apos;;
+Array.prototype.status = &apos;Dead&apos;;
+var result = arr.forEach(function(item,i) {
+    console.log(&apos;item&apos;,item);
+    console.log(&apos;i&apos;,i)
+})
+console.log(&apos;result&apos;,result)
+</code></pre><p><img src="http://i.imgur.com/sdezCPn.png" alt=""></p>
+<p>功能大而全的for循环，后面五中遍历方式均可以通过这个方式实现。这里需要注意的是，与for-in对数组循环不一样的是，这里循环出来的索引是Number型，而非字符串型的。另外原型与附加的其他属性也是不能被遍历出来的，所以forEach就适用于这种纯纯的数组。同理后面的几种遍历方式也是这样的，只能处理“纯数组”。</p>
+<h4 id="map"><a href="#map" class="headerlink" title="map"></a>map</h4><pre><code>let arr = [&apos;I&apos;,&apos;am&apos;,&apos;so&apos;,&apos;busy&apos;,&apos;recently&apos;];
+let result = arr.map(function(item,i) {
+    return item + &apos;!&apos;;
+})
+console.log(result);// [&quot;I!&quot;, &quot;am!&quot;, &quot;so!&quot;, &quot;busy!&quot;, &quot;recently!&quot;]
+</code></pre><p>map的作用是处理数组的每一个元素，然后再返回一个新的数组。这个新数组就是map方法的返回值，<br>而这个新数组的元素又是回调函数内的每一个返回值决定的。简而言之就是通过某种计算，让一个数组返回一个新的数组。</p>
+<h4 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h4><pre><code>let arr = [&apos;I&apos;,&apos;am&apos;,&apos;so&apos;,&apos;busy&apos;,&apos;recently&apos;];
+let result = arr.filter(function(item,i) {
+    return item.length &gt; 1
+})
+console.log(result);// [&quot;am&quot;, &quot;so&quot;, &quot;busy&quot;, &quot;recently&quot;]
+</code></pre><p>filter同样是返回一个新的数组，与map不同的是，filter新数组的元素还是由之前的那些元素构成的，不过经过了一次筛选。</p>
+<h4 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h4><pre><code>let arr = [&apos;I&apos;,&apos;am&apos;,&apos;so&apos;,&apos;busy&apos;,&apos;recently&apos;];
+let result = arr.reduce(function(prev,next) {
+    return prev + next;
+})
+console.log(result);// Iamsobusyrecently
+</code></pre><p>让数组中的前项与后项进行某种计算，最终算出最终值。如进行累加等操作。</p>
+<h4 id="some"><a href="#some" class="headerlink" title="some"></a>some</h4><pre><code>let arr = [&apos;I&apos;,&apos;am&apos;,&apos;so&apos;,&apos;busy&apos;,&apos;recently&apos;];
+let result = arr.some(function(item,index) {
+    return item.length &gt; 2;
+})
+console.log(result);// true
+</code></pre><p>some方法返回一个boolean值，bool值由回调中的返回值决定，只要回调中的retrun了一次或以上的true，则some方法返回true。应用的数组上，就是只要数组某一元素满足一个条件，则最终some方法返回true。</p>
+<h4 id="every"><a href="#every" class="headerlink" title="every"></a>every</h4><pre><code>let arr = [&apos;I&apos;,&apos;am&apos;,&apos;so&apos;,&apos;busy&apos;,&apos;recently&apos;];
+let arr = [&apos;I&apos;,&apos;am&apos;,&apos;so&apos;,&apos;busy&apos;,&apos;recently&apos;];
+let result = arr.every(function(item,index) {
+    return item.length &gt; 2;
+})
+console.log(result);// false
+</code></pre><p>与some方法类似，不过这里需要回调函数内每一次都返回true，即数组的每一个元素都要满足自定义条件。</p>
+<h3 id="jQuery中的each"><a href="#jQuery中的each" class="headerlink" title="jQuery中的each"></a>jQuery中的each</h3><p>最后，作为补充，简单介绍一下jQuery中的each，这和forEach非常的相似，在使用上最大的区别获取就是回调参数顺序是相反的。</p>
+<p>它有两种形式，一是直接对一数组调用each方法，然后传入回调函数，二是$.each(arr/obj，i,j)两个形式。</p>
+<pre><code>let arr = [&apos;I&apos;,&apos;am&apos;,&apos;so&apos;,&apos;busy&apos;,&apos;recently&apos;];
+let obj = {
+    name: &apos;Java&apos;,
+    desc: &apos;Java + You&apos;
+}
+
+// 这里需要将arr转换成jQuery对象，不然会保存
+$(arr).each(function(index,item) {
+    // 分别打印出数组的索引与元素值
+    console.log(index,item) 
+})
+
+// 对对象的遍历没有意义
+$(obj).each(function(key,val) {
+    // 0,{name: &quot;Java&quot;, desc: &quot;Java + You&quot;}
+    console.log(key,val);
+})
+
+// 报错：obj.each is not a function 
+obj.each(function(key,val) {
+    console.log(key,val)
+})
+
+// arr转不转化成jQuery对象都一样
+$.each(arr,function(key,val) {
+    // 分别打印出数组的索引与元素值
+    console.log(key,val);
+})
+
+// obj不能写成$(obj),否则将打印 0,{name: &apos;Java&apos;,desc: &apos;Java + You&apos;}
+$.each(obj,function(key,val) {
+    // 打印obj的键值对
+    console.log(key,val);
+})
+</code></pre><p>jQuery的each方法适用与数组，要注意的是需把数组转化成jQuery对象；$.each适用与数组与对象，且不用转化成jQuery对象，$.each显然更加的强大，有点for-in与for-of结合的感觉。所以$.each对与json数据的解析也十分强大。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://i1.piimg.com/588926/3dd50e13cf0c2426.jpg" alt="赵波 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/09/JavaScript中的数据属性与访问器属性/" rel="next" title="JavaScript中的数据属性与访问器属性">
+                <i class="fa fa-chevron-left"></i> JavaScript中的数据属性与访问器属性
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://tva3.sinaimg.cn/crop.0.0.512.512.180/6a53d026jw8f03tm6trj7j20e80e8jrr.jpg"
+               alt="赵波" />
+          <p class="site-author-name" itemprop="name">赵波</p>
+           
+              <p class="site-description motion-element" itemprop="description">程序媛鼓励师</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/iamzhaobo" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/bbz100" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/zhao-bo-12-2" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for型"><span class="nav-number">2.</span> <span class="nav-text">for型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#普通for循环"><span class="nav-number">2.1.</span> <span class="nav-text">普通for循环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#for-in"><span class="nav-number">2.2.</span> <span class="nav-text">for-in</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#回调型"><span class="nav-number">3.</span> <span class="nav-text">回调型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#forEach"><span class="nav-number">3.1.</span> <span class="nav-text">forEach</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#map"><span class="nav-number">3.2.</span> <span class="nav-text">map</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#filter"><span class="nav-number">3.3.</span> <span class="nav-text">filter</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#reduce"><span class="nav-number">3.4.</span> <span class="nav-text">reduce</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#some"><span class="nav-number">3.5.</span> <span class="nav-text">some</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#every"><span class="nav-number">3.6.</span> <span class="nav-text">every</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery中的each"><span class="nav-number">4.</span> <span class="nav-text">jQuery中的each</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">赵波</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+      
+    </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="true"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
+</body>
+</html>
