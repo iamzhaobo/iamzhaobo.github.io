@@ -99,7 +99,7 @@
 <meta property="og:description" content="许多初学者乃至有一定前端编程经验的人往往也道不清JavaScript中数组的几种遍历方式，因为除了常用的几种for之外，对与另外的几种回调方法，在日常编码中使用的也比较少，这里写几个Demo，从易到难，把JavaScript中涉及到的几种数组遍历方法梳理一下。  简介JavaScript数组的遍历方法按照语法规则来分，我将它们分为两类，一类是以for、for-in、for-of为代表的for循环">
 <meta property="og:image" content="http://i.imgur.com/U5BMhmn.png">
 <meta property="og:image" content="http://i.imgur.com/sdezCPn.png">
-<meta property="og:updated_time" content="2017-07-22T08:55:49.839Z">
+<meta property="og:updated_time" content="2017-07-22T09:11:23.820Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅析JavaScript数组的9种迭代方式">
 <meta name="twitter:description" content="许多初学者乃至有一定前端编程经验的人往往也道不清JavaScript中数组的几种遍历方式，因为除了常用的几种for之外，对与另外的几种回调方法，在日常编码中使用的也比较少，这里写几个Demo，从易到难，把JavaScript中涉及到的几种数组遍历方法梳理一下。  简介JavaScript数组的遍历方法按照语法规则来分，我将它们分为两类，一类是以for、for-in、for-of为代表的for循环">
@@ -316,9 +316,9 @@
             
             <span class="post-letters-count">
               &nbsp; | &nbsp;
-              <span>2,046 字</span>
+              <span>2,263 字</span>
               &nbsp; | &nbsp;
-              <span>8 min</span>
+              <span>9 min</span>
             </span>
           
           </span>
@@ -416,6 +416,16 @@ for (let i in arr) {
 <p>在只针对<code>var arr = [&#39;S&#39;,&#39;N&#39;,&#39;Q&#39;,&#39;U&#39;]</code>这个数组的情况下，for-in数组得出的结果与遍历对象是非常类似的，i代表数组的所以，arr[i]则代码数组的值；但是，奇怪的事情发生了，在这里，i的类型居然是字符串，数组的索引怎么可能是字符串呢？但是，在JavaScript中，确实它的内部实现就是这样，数组在内存中不是存在连续的内存中，数组的索引并不是它在内存中的偏移量，但同时，我们平时是通过arr[i]（这里的i当然是一个Number），取出数组的，这又是怎么回事呢？因为JavaScript已经把i强制转换成了String类型的了，所以我们就感觉是在操作一个“真正的数组”一样。</p>
 <p>然后这里for-in把name与原型中的proAttr也遍历了出来，这就是for-in对数组不友好的地方了，因为涉及到要去原型找东西，故它的性能就这么低了，但同时，Array的length属性没有遍历出来的原因是length这个属性的特性里面enumerable是false的，当然不能遍历出来了（具体可以看我之前<a href="http://www.iamzhaobo.xyz/2017/07/09/JavaScript%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E5%B1%9E%E6%80%A7%E4%B8%8E%E8%AE%BF%E9%97%AE%E5%99%A8%E5%B1%9E%E6%80%A7/" target="_blank" rel="external">关于对象属性的文章</a>）。正是因为这个原因，ES6推出了for-of。</p>
 <p>总结就是for-in非常适用于对象，不要用在数组上。</p>
+<h4 id="for-of"><a href="#for-of" class="headerlink" title="for-of"></a>for-of</h4><p>针对for-in对遍历数组的种种不便，ES6推出了for-of循环方式。</p>
+<pre><code>var arr = [&apos;S&apos;,&apos;N&apos;,&apos;Q&apos;,&apos;U&apos;];
+arr.name = &apos;PHP is the best programming language&apos;;
+Array.prototype.proAttr = &apos;prototype attrbute&apos;;
+for (let item of arr) {
+    console.log(item) // S N Q U
+}
+</code></pre><p>没有那么多乱七八糟的东西，遍历出来的就是“纯数组”里面的几个元素，不会去属性和原型里面找东西说明了它的性能肯定不会比for-in差。</p>
+<p>另外，下面即将提到的forEach，它不支持break，continue，return，这些，for-of通通支持；for-of不仅支持数组，它也支持ES6中一切有Iterator属性的对象，如nodeList等；同样它也支持对字符串进行遍历，即将字符串看作Unicode来进行遍历，还有Map与Set也可以用for-of。</p>
+<p>最后，普通对象还是交给for-in，不要使用for-of。</p>
 <h3 id="回调型"><a href="#回调型" class="headerlink" title="回调型"></a>回调型</h3><p>既然将它们归为回调型，则它们共同的特定就是均要写成高阶函数传函数参的形式，这个回调的函数里有两个值<code>(item,index)</code>（除了reduce），item是当前遍历的那一个值，index则是它的索引（Number型）。</p>
 <p>上面说的是它们的相同点，对于它们的功能，返回值等都各有差异，下面通过代码进行区分。</p>
 <h4 id="forEach"><a href="#forEach" class="headerlink" title="forEach"></a>forEach</h4><pre><code>let arr = [&apos;I&apos;,&apos;am&apos;,&apos;so&apos;,&apos;busy&apos;,&apos;recently&apos;];
@@ -719,7 +729,7 @@ $.each(obj,function(key,val) {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for型"><span class="nav-number">2.</span> <span class="nav-text">for型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#普通for循环"><span class="nav-number">2.1.</span> <span class="nav-text">普通for循环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#for-in"><span class="nav-number">2.2.</span> <span class="nav-text">for-in</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#回调型"><span class="nav-number">3.</span> <span class="nav-text">回调型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#forEach"><span class="nav-number">3.1.</span> <span class="nav-text">forEach</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#map"><span class="nav-number">3.2.</span> <span class="nav-text">map</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#filter"><span class="nav-number">3.3.</span> <span class="nav-text">filter</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#reduce"><span class="nav-number">3.4.</span> <span class="nav-text">reduce</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#some"><span class="nav-number">3.5.</span> <span class="nav-text">some</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#every"><span class="nav-number">3.6.</span> <span class="nav-text">every</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery中的each"><span class="nav-number">4.</span> <span class="nav-text">jQuery中的each</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for型"><span class="nav-number">2.</span> <span class="nav-text">for型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#普通for循环"><span class="nav-number">2.1.</span> <span class="nav-text">普通for循环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#for-in"><span class="nav-number">2.2.</span> <span class="nav-text">for-in</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#for-of"><span class="nav-number">2.3.</span> <span class="nav-text">for-of</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#回调型"><span class="nav-number">3.</span> <span class="nav-text">回调型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#forEach"><span class="nav-number">3.1.</span> <span class="nav-text">forEach</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#map"><span class="nav-number">3.2.</span> <span class="nav-text">map</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#filter"><span class="nav-number">3.3.</span> <span class="nav-text">filter</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#reduce"><span class="nav-number">3.4.</span> <span class="nav-text">reduce</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#some"><span class="nav-number">3.5.</span> <span class="nav-text">some</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#every"><span class="nav-number">3.6.</span> <span class="nav-text">every</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery中的each"><span class="nav-number">4.</span> <span class="nav-text">jQuery中的each</span></a></li></ol></div>
             
 
           </div>
