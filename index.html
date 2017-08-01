@@ -273,6 +273,219 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/29/深度使用JSON-stringify/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="赵波">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://tva3.sinaimg.cn/crop.0.0.512.512.180/6a53d026jw8f03tm6trj7j20e80e8jrr.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="赵波的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/29/深度使用JSON-stringify/" itemprop="url">深度使用JSON.stringify</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-29T22:49:57+08:00">
+                2017-07-29
+              </time>
+            
+
+            
+
+            
+            
+            <span class="post-letters-count">
+              &nbsp; | &nbsp;
+              <span>498 字</span>
+              &nbsp; | &nbsp;
+              <span>2 min</span>
+            </span>
+          
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>JSON.stringify的一些罕见的使用方法。</p>
+</blockquote>
+<h3 id="关于JSON-stringify"><a href="#关于JSON-stringify" class="headerlink" title="关于JSON.stringify"></a>关于JSON.stringify</h3><p>作为一名前端开发人员，从接触到Ajax开始，我们边接触到了JSON.stringify与JSON.parse这两个函数。JSON.parse通常用于将服务器传过来的JSON格式的字符串转化成JSON对象或数组，而JSON.stringify则正好相反，它将一个JSON值转化成了JSON字符串。</p>
+<h3 id="函数的使用"><a href="#函数的使用" class="headerlink" title="函数的使用"></a>函数的使用</h3><h4 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h4><pre><code>const data = {
+    name: &apos;Guanruyi&apos;,
+    desc: &apos;He pick up soap&apos;,
+    partner: undefined,
+    girlfriend: null,
+    do: function() {
+        console.log(&apos;papapa&apos;);
+    }
+}
+
+console.log(JSON.stringify(data))
+// {&quot;name&quot;:&quot;Guanruyi&quot;,&quot;desc&quot;:&quot;He pick up soap&quot;,&quot;girlfriend&quot;:null}
+</code></pre><p>这里的常量data是一个JavaScript值，下面利用JSON.stringify将之转化为一个字符串，但是，这里的partner与do属性不能转化出字符串来，它们对应的值分别是undefined和一个函数。</p>
+<p>将undefined和函数体作为字符串显示，这里就引出了JSON.stringify的后面两个可选参数JSON.stringify(value[,replacer[,space]])</p>
+<h4 id="replacer参数"><a href="#replacer参数" class="headerlink" title="replacer参数"></a>replacer参数</h4><pre><code>const data = {
+    name: &apos;Guanruyi&apos;,
+    desc: &apos;He pick up soap&apos;,
+    partner: undefined,
+    girlfriend: null,
+    do: function() {
+        console.log(&apos;papapa&apos;);
+    }
+}
+
+const replacerFn = function(k ,v) {
+    if(typeof v === &apos;function&apos;) {
+        return Function.prototype.toString.call(v)
+    }
+    if (v === undefined) {
+        return &apos;undefined&apos;;
+    }
+    return v
+}
+
+console.log(JSON.stringify(data, replacerFn))
+// {&quot;name&quot;:&quot;Guanruyi&quot;,&quot;desc&quot;:&quot;He pick up soap&quot;,&quot;partner&quot;:&quot;undefined&quot;,&quot;girlfriend&quot;:null,&quot;do&quot;:&quot;function () {\n\t\t\t\tconsole.log(&apos;papapa&apos;);\n\t\t\t}&quot;}
+</code></pre><p>replacer是一个回调函数，有两个参数，key和value，分别对应当前对象的键值，除了想上述代码一个对它的function与undefined返回特定值之外，与map函数类似，你可以根据key与value的值对它进行任何操作，返回你想要的值，故叫replacer。</p>
+<h4 id="space参数"><a href="#space参数" class="headerlink" title="space参数"></a>space参数</h4><pre><code>const data = {
+    name: &apos;Guanruyi&apos;,
+    desc: &apos;He pick up soap&apos;,
+    partner: undefined,
+    girlfriend: null,
+    do: function() {
+        console.log(&apos;papapa&apos;);
+    }
+}
+
+const replacerFn = function(k ,v) {
+    if(typeof v === &apos;function&apos;) {
+        return Function.prototype.toString.call(v)
+    }
+    if (v === undefined) {
+        return &apos;undefined&apos;;
+    }
+    return v
+}
+
+console.log(JSON.stringify(data, replacerFn, 4))
+
+
+// 运行结果
+{
+    &quot;name&quot;: &quot;Guanruyi&quot;,
+    &quot;desc&quot;: &quot;He pick up soap&quot;,
+    &quot;partner&quot;: &quot;undefined&quot;,
+    &quot;girlfriend&quot;: null,
+    &quot;do&quot;: &quot;function () {\n\t\t\t\tconsole.log(&apos;papapa&apos;);\n\t\t\t}&quot;
+}
+</code></pre><p>space，即相当于Sublime右下角的tab size，是美化输出的字符串，space的值代码花括号后缩进的空格数。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/15/浅析JavaScript数组的9种迭代方式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1625,7 +1838,7 @@ hello(&apos;Test Webpack&apos;)
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
