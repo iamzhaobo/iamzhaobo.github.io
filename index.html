@@ -273,6 +273,251 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/09/Python函数的几种参数类型/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="赵波">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://tva3.sinaimg.cn/crop.0.0.512.512.180/6a53d026jw8f03tm6trj7j20e80e8jrr.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="赵波的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/09/Python函数的几种参数类型/" itemprop="url">Python函数的几种参数类型</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-09T22:19:51+08:00">
+                2017-08-09
+              </time>
+            
+
+            
+
+            
+            
+            <span class="post-letters-count">
+              &nbsp; | &nbsp;
+              <span>2,172 字</span>
+              &nbsp; | &nbsp;
+              <span>8 min</span>
+            </span>
+          
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>以下代码均以Python3为基础理解。</p>
+</blockquote>
+<h3 id="初识Python函数"><a href="#初识Python函数" class="headerlink" title="初识Python函数"></a>初识Python函数</h3><p>大部分常见的语言如C、Java、PHP、C#、JavaScript等属于C系语言，Python不属于他们中的一员（ruby亦然）。在这些语言中，Python也属于比较新奇的一派，就函数来说，它没有大括号，用<code>def</code>关键字定义一个函数，定义后用<code>:</code>然后换行tab指定函数函数的范围，当然也不存在什么分号。</p>
+<p>作为一个函数，那个它肯定是有参数的，Python对于参数的定义比较繁杂，如果了解ES6，那么在Python函数的各个参数中差不多都能够找到对应的ES6定义，因为JS是我最为熟悉的编程语言，所以在下面介绍各种参数类型时都会对照JS中对应的类型，以加强理解。</p>
+<p>Python函数参数分为位置参数、默认参数、可变参数、关键字参数、命名关键字参数五大类。</p>
+<h3 id="位置参数"><a href="#位置参数" class="headerlink" title="位置参数"></a>位置参数</h3><p>这是最大众化的一种参数类型了，就是函数中定义确定的形参，然后调用函数的实参传入一一对应的参数，参数的位置、个数都不得有偏差。不同于JS中实参与形参可不同个数，这里的要求是非常严格的。</p>
+<pre><code>def desc(name,age,city)
+    print(&apos;name = &apos; , name,&apos;age = &apos; , age,&apos;city = &apos; , city)
+
+# name =  zhaobo age =  12 city =  luzhou
+desc(&apos;zhaobo&apos;,12,&apos;luzhou&apos;)
+</code></pre><h3 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h3><p>ES6中也有默认参数这种用法，Python中的用法与在ES中的用法出差不多的。在定义形参时即指定好默认参数，如果在实参没有传入这个位置的参数，那么这里的参数就为默认参数，默认参数要写在位置参数后面。</p>
+<pre><code>def desc(name,gender,city = &apos;luzhou&apos;,age = 15):
+print(&apos;name = &apos; , name,&apos;gender = &apos; , gender,&apos;city = &apos; , city,&apos;age = &apos; , age)
+
+desc(&apos;zhaobo&apos;,&apos;male&apos;) # name =  zhaobo gender =  male city =  luzhou age =  15
+desc(&apos;YeJ.Q&apos;,&apos;female&apos;,&apos;Deyang&apos;) # name =  YeJ.Q gender =  female city =  Deyang age =  15
+desc(&apos;WeiC.M&apos;,&apos;female&apos;,age = 16) # name =  WeiC.M gender =  female city =  luzhou age =  16
+</code></pre><p>如上代码，desc函数有四个参数，其中后面两个是默认参数，第一种调用方式只传了必选的两个位置参数，那么通过打印结果来看，name和age是我们传进去的值，后面的city和age是默认参数中的值；第二种方式按照顺序三个值，前两个必选参数自然不必说，第三个参数覆盖了默认参数的值，第四个参数还是默认参数的值，是实际写代码的时候，要将变化小的参数写在参数列后面；最后一种调用方式，我们想的是在city上取默认值，但是在age上需要传新值，这个就在实参里面直接指定age的值，所以体现出默认参数的传递不一定要按照参数的顺序来传值。</p>
+<p>总结：</p>
+<ol>
+<li>默认参数必须在必选参数之后；</li>
+<li>当函数有多个参数时，把变化大的参数放前面，变化小的参数放后面。变化小的参数就可以作为默认参数。</li>
+<li>默认参数也可以不安默认的顺序提供参数，enroll(‘Adam’, ‘M’, city=’Tianjin’)，这样调用即可</li>
+<li>默认参数必须指向不变对象（str、None、int、float等）！不可指向list</li>
+</ol>
+<h3 id="可变参数"><a href="#可变参数" class="headerlink" title="可变参数"></a>可变参数</h3><p>ES6中新增了一种rest参数（不定参数），是JS中arguments的语法糖，在传参的时候可传不定个数的参数，在函数中打印出不定参数是一个数组。</p>
+<p>在Python中也有类似的语法，叫做不定参数，他的参数用<code>*param</code>定义，写在函数的最后（有且只能写一个），进行传参的时候，也可传也可不传参数，参数的个数也可变。</p>
+<pre><code>def power(name,*desc):
+# 打印出来是一个tuple
+# (&apos;12&apos;, &apos;male&apos;, &apos;student&apos;)
+print(desc) 
+
+power(&apos;zhaobo&apos;,&apos;12&apos;,&apos;male&apos;,&apos;student&apos;) 
+power(&apos;zhaobo&apos;,*[&apos;12&apos;,&apos;male&apos;,&apos;student&apos;])
+power(&apos;zhaobo&apos;,*(&apos;12&apos;,&apos;male&apos;,&apos;student&apos;))
+</code></pre><p>上述代码定义了使用不定参数的三种类型</p>
+<ol>
+<li>完全体现“不定”两个字的含义，在对位置参数进行了对应的传参之后，剩下的就是不定参数，注意这里总共传入了四个参数，第一个是位置参数，后三个都将作为不定参数传入，在函数中作为不定参数打印出来的是一个元组(tuple)；</li>
+<li>传入了两个参数，第一个是位置参数，第二个在列表(list)的前面加上了一个<code>*</code>，这样就可以直接传入一个列表，然后打印结果与第一种是一样的。利用这一个语法糖就可以直接将参数传入一个列表。</li>
+<li>这种方式与传入列表几乎无异，只是可以传入一个元组。</li>
+</ol>
+<h3 id="关键字参数"><a href="#关键字参数" class="headerlink" title="关键字参数"></a>关键字参数</h3><p>在使用JS尤其是jQuery的时候，常见用对象当作参数传递，在Python中也有类似的用法，而且功能也非常强大。</p>
+<pre><code>def foo(name,**kw):
+# {&apos;age&apos;: 8, &apos;gender&apos;: &apos;male&apos;}
+print(kw)
+
+foo(&apos;zhaobo&apos;,**{&apos;age&apos;: 8,&apos;gender&apos;: &apos;male&apos;})
+foo(&apos;zhaobo&apos;,age = 8,gender = &apos;male&apos;)
+</code></pre><p>关键字参数有两个调用方式，第一种，最简单直接的调用，可以在字典前加入<code>**</code>，然后直接传入字典，打印出来之后就是传入的这一个字典；第二种，将字典的key-value写成对应的表达式，然后每一个表达式对应一个参数传入，最后也会打印出这个字典，注意在写参数的时候，key不能用引号包起来。</p>
+<h3 id="命名关键字参数"><a href="#命名关键字参数" class="headerlink" title="命名关键字参数"></a>命名关键字参数</h3><p>前面的关键字参数是传一个字典到函数中，然后在函数中打印出来也是一个字典的形式。命名关键字参数，即是指定这个字典的key，使得传入的参数只能是当前指定的这些key。如下代码：</p>
+<pre><code># 一般情况
+def power(name,*,age,gender):
+    print(name) # zhaobo
+    print(age) # 12
+    print(gender) # male
+
+power(&apos;zhaobo&apos;,age = 12, gender = &apos;male&apos;)
+power(&apos;zhaobo&apos;,**{&apos;age&apos;: 12,&apos;gender&apos;: &apos;male&apos;})
+
+# 有可变参数的情况
+def power(name,*kw,age = 10,gender):
+    print(name) # zhaobo
+    print(kw) # (&apos;param1&apos;, &apos;param2&apos;, &apos;param3&apos;)
+    print(age) # 12
+    print(gender) # male
+
+power(&apos;zhaobo&apos;,&apos;param1&apos;,&apos;param2&apos;,&apos;param3&apos;,age = 12,gender = &apos;male&apos;)
+power(&apos;zhaobo&apos;,&apos;param1&apos;,&apos;param2&apos;,&apos;param3&apos;,**{&apos;age&apos;: 12, &apos;gender&apos;: &apos;male&apos;})
+power(&apos;zhaobo&apos;,&apos;param1&apos;,&apos;param2&apos;,&apos;param3&apos;,**{&apos;gender&apos;: &apos;male&apos;})
+</code></pre><p>上述代码展示了对命名关键字调用的两种形式。在一般的形式中，命名关键字参数用<code>*</code>分隔，注意<code>*</code>两边要打上逗号，然后就是指定命名命名关键字参数的key值，在调用函数时，有两种方式，一是key = value的形式，key与定义函数的命名关键字参数对应(顺序可以不一样)，注意这里的key不要用引号包起来；另一中方式就是直接传一个字典，然后在字典前面加上<code>**</code>。</p>
+<p>在有可变参数的情况下，对函数的定义就不用再单独写<code>*</code>了，指定在可变参数后面定义好关键字参数即可，在调用上，也是有key = value，直接传字典两种形式，在可变参数后面指定关键字参数即可。</p>
+<p>需要注意的是，命名关键字参数也可以指定默认值，指定了默认值即代表这个key可传可不传，如果没有指定默认值那个key的参数多传或者是漏传都会导致语法错误。</p>
+<h3 id="多种参数类型"><a href="#多种参数类型" class="headerlink" title="多种参数类型"></a>多种参数类型</h3><p>在Python中定义函数，上述的五种参数是可以混合定义的，参数定义的顺序必须是：必选参数、默认参数、可变参数、命名关键字参数和关键字参数。</p>
+<pre><code># 定义一个函数，包含上述若干种参数：
+def f1(a, b, c=0, *args, **kw):
+    print(&apos;a =&apos;, a, &apos;b =&apos;, b, &apos;c =&apos;, c, &apos;args =&apos;, args, &apos;kw =&apos;, kw)
+
+def f2(a, b, c=0, *, d, **kw):
+    print(&apos;a =&apos;, a, &apos;b =&apos;, b, &apos;c =&apos;, c, &apos;d =&apos;, d, &apos;kw =&apos;, kw)
+
+
+# 在函数调用的时候，Python解释器自动按照参数位置和参数名把对应的参数传进去。
+&gt;&gt;&gt; f1(1, 2)
+a = 1 b = 2 c = 0 args = () kw = {}
+&gt;&gt;&gt; f1(1, 2, c=3)
+a = 1 b = 2 c = 3 args = () kw = {}
+&gt;&gt;&gt; f1(1, 2, 3, &apos;a&apos;, &apos;b&apos;)
+a = 1 b = 2 c = 3 args = (&apos;a&apos;, &apos;b&apos;) kw = {}
+&gt;&gt;&gt; f1(1, 2, 3, &apos;a&apos;, &apos;b&apos;, x=99)
+a = 1 b = 2 c = 3 args = (&apos;a&apos;, &apos;b&apos;) kw = {&apos;x&apos;: 99}
+&gt;&gt;&gt; f2(1, 2, d=99, ext=None)
+a = 1 b = 2 c = 0 d = 99 kw = {&apos;ext&apos;: None}
+
+# 最神奇的是通过一个tuple和dict，你也可以调用上述函数：
+&gt;&gt;&gt; args = (1, 2, 3, 4)
+&gt;&gt;&gt; kw = {&apos;d&apos;: 99, &apos;x&apos;: &apos;#&apos;}
+&gt;&gt;&gt; f1(*args, **kw)
+a = 1 b = 2 c = 3 args = (4,) kw = {&apos;d&apos;: 99, &apos;x&apos;: &apos;#&apos;}
+&gt;&gt;&gt; args = (1, 2, 3)
+&gt;&gt;&gt; kw = {&apos;d&apos;: 88, &apos;x&apos;: &apos;#&apos;}
+&gt;&gt;&gt; f2(*args, **kw)
+a = 1 b = 2 c = 3 d = 88 kw = {&apos;x&apos;: &apos;#&apos;}
+</code></pre><p>所以，对于任意函数，都可以通过类似func(<em>args, *</em>kw)的形式调用它，无论它的参数是如何定义的。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/29/深度使用JSON-stringify/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1838,7 +2083,7 @@ hello(&apos;Test Webpack&apos;)
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1849,7 +2094,7 @@ hello(&apos;Test Webpack&apos;)
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1860,7 +2105,7 @@ hello(&apos;Test Webpack&apos;)
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
