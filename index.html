@@ -273,6 +273,242 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/19/三个暖心却鲜为人知的CSS属性/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="赵波">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://tva3.sinaimg.cn/crop.0.0.512.512.180/6a53d026jw8f03tm6trj7j20e80e8jrr.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="赵波的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/19/三个暖心却鲜为人知的CSS属性/" itemprop="url">三个暖心却鲜为人知的CSS属性</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-19T23:17:55+08:00">
+                2017-08-19
+              </time>
+            
+
+            
+
+            
+            
+            <span class="post-letters-count">
+              &nbsp; | &nbsp;
+              <span>909 字</span>
+              &nbsp; | &nbsp;
+              <span>4 min</span>
+            </span>
+          
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>平时工作常用到的CSS属性就那几十个，在编写代码中用到的也不是特别深的东西，不过对于一些生僻的属性，使用了之后可以大大的方便我们的开发工作。</p>
+</blockquote>
+<h3 id="pointer-events"><a href="#pointer-events" class="headerlink" title="pointer-events"></a>pointer-events</h3><p>在不考虑SVG元素的情况下，这个属性对普通的元素有两个值：auto(默认值)和none；在将值设置为none的情况下，有两个含义，一是此元素不能不能捕获任何的鼠标事件，而是鼠标会完全忽略测元素，穿够作用于下一层元素。</p>
+<p>看结构代码：</p>
+<pre><code>&lt;body&gt;
+    &lt;div class=&quot;wrap&quot;&gt;
+        &lt;select&gt;
+            &lt;option value=&quot;&quot;&gt;AAA&lt;/option&gt;
+            &lt;option value=&quot;&quot;&gt;BBB&lt;/option&gt;
+            &lt;option value=&quot;&quot;&gt;CCC&lt;/option&gt;
+        &lt;/select&gt;
+        &lt;canvas id=&quot;c&quot; width=&quot;500&quot; height=&quot;400&quot;&gt;什么杰宝浏览器不支持Canvas&lt;/canvas&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;btn-wrap&quot;&gt;
+        &lt;button type=&quot;button&quot;&gt;BUTTON&lt;/button&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        var canvas = document.querySelector(&apos;#c&apos;);
+        var context = canvas.getContext(&apos;2d&apos;);
+        context.fillStyle = &apos;rgba(250,0,0,.5)&apos;;
+        context.fillRect(0,0,500,400);
+
+        var btnWrap = document.querySelector(&apos;.btn-wrap&apos;);
+        btnWrap.addEventListener(&apos;click&apos;,function() {
+            alert(&apos;Btn Wrap&apos;);
+        })
+
+        var btn = document.querySelector(&apos;button&apos;);
+        btn.addEventListener(&apos;click&apos;,function(event) {
+            alert(&apos;Fuck&apos;)
+        })
+    &lt;/script&gt;
+&lt;/body&gt;
+</code></pre><p>浏览器显示如下：<br><img src="http://i.imgur.com/BiKWsdL.png" alt=""></p>
+<p>CSS代码如下：</p>
+<pre><code>.wrap {
+    width: 500px;
+    height: 400px;
+    border: 1px solid #ccc;
+}
+
+select {
+    position: absolute;
+}
+
+#c {
+    position: absolute;
+    pointer-events: none;
+}
+
+.btn-wrap {
+    border: 1px solid yellow;
+    pointer-events: none;
+}
+
+button {
+    width: 100px;
+    height: 30px;
+    margin-top: 10px;
+    pointer-events: auto;
+}
+</code></pre><p>按理说，在这个0.5透明度的红色Canvas的作用下，里面的select应该是不能点击的，但是由于给这个canvas设置了<code>pointer-events: none</code>,鼠标直接穿透了canvas点击到了Select；</p>
+<p>在下边<code>.btn-wrap</code>的地方，已经将btn-wrap设置成了<code>pointer-events: none</code>，所以直接点yellow色内部的区域是不能处罚点击事件的，但是，这个CSS属性并不能阻止冒泡，在点击了button之后，执行了btn绑定的事件代码，就会冒泡到外层直接<code>.btn-wrap</code>绑定的事件代码。</p>
+<p>看具体的代码实例请<a href="http://iamzhaobo.coding.me/Pointer-events-Demo/" target="_blank" rel="external">狠狠的点击这里</a></p>
+<h3 id="selection"><a href="#selection" class="headerlink" title="::selection"></a>::selection</h3><p>selection是一个伪元素（注意不是伪元素），当我们在浏览器中选中文字(以Chrome浏览器为例)，呈现出来的效果是淡蓝底白色文字的，通过配置selection伪元素即可改变文字的样式。<br>看以下代码： </p>
+<pre><code>&lt;html lang=&quot;en&quot;&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;Demo&lt;/title&gt;
+        &lt;style&gt;
+            p::selection {
+                color: red;
+                background: blue;
+                text-decoration: underline;
+            }
+            p::-moz-selection {
+                color: red;
+                background: blue;
+                text-decoration: underline;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;p&gt;我要选中这段文字啦啦啦啦&lt;/p&gt;
+        &lt;div&gt;我要选中这段普通的文字啦啦啦啦&lt;/div&gt;
+    &lt;/body&gt;
+    &lt;/html&gt;
+</code></pre><p>要看效果请<a href="http://iamzhaobo.coding.me/selectionDemo" target="_blank" rel="external">点击这里</a></p>
+<p>需要注意的是不是什么属性都可以网selection这个伪元素里边写，目前它只支持一小部分CSS属性：color, background-color, cursor, outline, text-decoration, text-emphasis-color和text-shadow。</p>
+<h3 id="user-select"><a href="#user-select" class="headerlink" title="user-select"></a>user-select</h3><p>这一个属性也是与选中文本相关的，在网上有些资料为了保护版权，有些就会采用这样一种(比较low)的方法，它有四个属性值none、text、all、element；</p>
+<p>text是它的默认值，表示可以选择文本；<br>none则是需要用到这个属性时最为常用的，表示不能选中文本；<br>all是指能够在单击的时候一并选中当前文字，就好似我们双击选中一个英文单词一样；<br>element表示可以选择文本，但选择范围受元素边界的约束；</p>
+<p><img src="https://i.imgur.com/FEEKnLC.png" alt=""></p>
+<p>这里写了一个<a href="http://iamzhaobo.coding.me/user-select-demo" target="_blank" rel="external">小demo</a>，使用了除默认值之外的三个特性，都非常的简单，但是需要主要的是chrome浏览器目前并不支持element这个值，而且经在支持这个属性的浏览器(IE10+,Firefox4+)上的表现与text并无不同。还没有搞清楚这是什么原因。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/09/Python函数的几种参数类型/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2083,7 +2319,7 @@ hello(&apos;Test Webpack&apos;)
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2105,7 +2341,7 @@ hello(&apos;Test Webpack&apos;)
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

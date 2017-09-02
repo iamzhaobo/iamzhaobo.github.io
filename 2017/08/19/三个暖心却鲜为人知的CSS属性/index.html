@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="sass,compass," />
+  <meta name="keywords" content="CSS,鲜为人知," />
 
 
 
@@ -90,17 +90,20 @@
 
 
 
-<meta name="description" content="以前也了解过一点点的SASS、LESS方面的知识，但是基本限于只能定义个变量，写个嵌套这个程度，况且之前还不知有Compass这个逆天神器的存在。如今，在新同事的引导下，整个项目的页面完全是由Sass + Compass这种模式来开发的，这是一种完全不一样的开发模式，特别是Compass的存在，使得页面的开发进入了工程化、模块化的新阶段。  简介限于笔者对SASS与Compass的理论掌握也只是">
-<meta name="keywords" content="sass,compass">
+<meta name="description" content="平时工作常用到的CSS属性就那几十个，在编写代码中用到的也不是特别深的东西，不过对于一些生僻的属性，使用了之后可以大大的方便我们的开发工作。  pointer-events在不考虑SVG元素的情况下，这个属性对普通的元素有两个值：auto(默认值)和none；在将值设置为none的情况下，有两个含义，一是此元素不能不能捕获任何的鼠标事件，而是鼠标会完全忽略测元素，穿够作用于下一层元素。 看结构代">
+<meta name="keywords" content="CSS,鲜为人知">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SASS结合Compass的安装与最基本使用">
-<meta property="og:url" content="http://yoursite.com/2017/06/18/SASS结合Compass的安装与最基本使用/index.html">
+<meta property="og:title" content="三个暖心却鲜为人知的CSS属性">
+<meta property="og:url" content="http://yoursite.com/2017/08/19/三个暖心却鲜为人知的CSS属性/index.html">
 <meta property="og:site_name" content="赵波的博客">
-<meta property="og:description" content="以前也了解过一点点的SASS、LESS方面的知识，但是基本限于只能定义个变量，写个嵌套这个程度，况且之前还不知有Compass这个逆天神器的存在。如今，在新同事的引导下，整个项目的页面完全是由Sass + Compass这种模式来开发的，这是一种完全不一样的开发模式，特别是Compass的存在，使得页面的开发进入了工程化、模块化的新阶段。  简介限于笔者对SASS与Compass的理论掌握也只是">
-<meta property="og:updated_time" content="2017-06-18T15:27:14.723Z">
+<meta property="og:description" content="平时工作常用到的CSS属性就那几十个，在编写代码中用到的也不是特别深的东西，不过对于一些生僻的属性，使用了之后可以大大的方便我们的开发工作。  pointer-events在不考虑SVG元素的情况下，这个属性对普通的元素有两个值：auto(默认值)和none；在将值设置为none的情况下，有两个含义，一是此元素不能不能捕获任何的鼠标事件，而是鼠标会完全忽略测元素，穿够作用于下一层元素。 看结构代">
+<meta property="og:image" content="http://i.imgur.com/BiKWsdL.png">
+<meta property="og:image" content="https://i.imgur.com/FEEKnLC.png">
+<meta property="og:updated_time" content="2017-09-02T13:30:09.623Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SASS结合Compass的安装与最基本使用">
-<meta name="twitter:description" content="以前也了解过一点点的SASS、LESS方面的知识，但是基本限于只能定义个变量，写个嵌套这个程度，况且之前还不知有Compass这个逆天神器的存在。如今，在新同事的引导下，整个项目的页面完全是由Sass + Compass这种模式来开发的，这是一种完全不一样的开发模式，特别是Compass的存在，使得页面的开发进入了工程化、模块化的新阶段。  简介限于笔者对SASS与Compass的理论掌握也只是">
+<meta name="twitter:title" content="三个暖心却鲜为人知的CSS属性">
+<meta name="twitter:description" content="平时工作常用到的CSS属性就那几十个，在编写代码中用到的也不是特别深的东西，不过对于一些生僻的属性，使用了之后可以大大的方便我们的开发工作。  pointer-events在不考虑SVG元素的情况下，这个属性对普通的元素有两个值：auto(默认值)和none；在将值设置为none的情况下，有两个含义，一是此元素不能不能捕获任何的鼠标事件，而是鼠标会完全忽略测元素，穿够作用于下一层元素。 看结构代">
+<meta name="twitter:image" content="http://i.imgur.com/BiKWsdL.png">
 
 
 
@@ -128,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/06/18/SASS结合Compass的安装与最基本使用/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/08/19/三个暖心却鲜为人知的CSS属性/"/>
 
 
 
 
 
-  <title>SASS结合Compass的安装与最基本使用 | 赵波的博客</title>
+  <title>三个暖心却鲜为人知的CSS属性 | 赵波的博客</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -273,7 +276,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/18/SASS结合Compass的安装与最基本使用/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/19/三个暖心却鲜为人知的CSS属性/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="赵波">
@@ -290,7 +293,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">SASS结合Compass的安装与最基本使用</h1>
+          <h1 class="post-title" itemprop="name headline">三个暖心却鲜为人知的CSS属性</h1>
         
 
         <div class="post-meta">
@@ -302,8 +305,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-18T21:56:08+08:00">
-                2017-06-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-19T23:17:55+08:00">
+                2017-08-19
               </time>
             
 
@@ -313,9 +316,9 @@
             
             <span class="post-letters-count">
               &nbsp; | &nbsp;
-              <span>821 字</span>
+              <span>909 字</span>
               &nbsp; | &nbsp;
-              <span>3 min</span>
+              <span>4 min</span>
             </span>
           
           </span>
@@ -373,17 +376,101 @@
 
       
         <blockquote>
-<p>以前也了解过一点点的SASS、LESS方面的知识，但是基本限于只能定义个变量，写个嵌套这个程度，况且之前还不知有Compass这个逆天神器的存在。如今，在新同事的引导下，整个项目的页面完全是由Sass + Compass这种模式来开发的，这是一种完全不一样的开发模式，特别是Compass的存在，使得页面的开发进入了工程化、模块化的新阶段。</p>
+<p>平时工作常用到的CSS属性就那几十个，在编写代码中用到的也不是特别深的东西，不过对于一些生僻的属性，使用了之后可以大大的方便我们的开发工作。</p>
 </blockquote>
-<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>限于笔者对SASS与Compass的理论掌握也只是皮毛，只是在工程中有过一点实际的应用所以才对其有更深入的理解，所以下面的阐述难免有些纰漏。</p>
-<p>SASS不是一种新的语言，它只是书写CSS的一种新的方式，通过“编译器”，最终它还是会转化成CSS代码的，因为SASS并不能被HTML所解释。而这样一种新的方式，它的作用就是简化CSS的编写，同时提高整个系统的可维护性。</p>
-<p>Compass则是一个工具与一系列的“库文件”，它与SASS之间的关系就好比jQuery与JavaScript的关系，利用Compass中提供的“库”，有许多的样式都不用我们自己编写，利用SASS的语法直接引用就可以了。</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>前面提到了“编译器”的概念，而这里的“编译器”就是Ruby运行环境。</p>
-<p>在Windows上安装Ruby，首先要<a href="https://rubyinstaller.org/downloads/" target="_blank" rel="external">下载</a>RubyInstaller，这里注意选择Windows的位版本，整个安装过程都是傻瓜式的，也不需要手动配置环境变量。安装完成之后，在CMD里面<code>ruby -v</code>,如果显示有版本号，那么整个Ruby就在你的系统上安装成功了。</p>
-<p>接下来要提到一个叫gem的东西，作为一个前端，可以不知道gem，但肯定知道npm，如果不知道什么是npm，建议您打开一个新的标签页Google一下，看十几分钟再回头来看这篇文章。在我的理解中gem就是Ruby下的npm。</p>
-<p>在我们的Ruby环境安装好之后，gem也就自动安装好了，和npm类似，接下来就要配置其镜像地址<code>gem sources -a ruby.taobao.org</code>，这样就能在国内的网络下畅通的下个各个gem包。在SASS与Compas的使用上，我们需要的就是两个包，首先安装SASS，<code>gem install sass</code>，然后安装Compass，<code>gem install compass</code>，最后利用<code>sass -v</code>,<code>compass -v</code>分别测试一下SASS与Compass是否安装好，如果以前顺利，那么整个环境就已经建立成功了。</p>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>进入你想要建立工程的目录，<code>compass create myproject</code>,即可建立一个Compass工程，在这里面，你可以看到一个名为config.rb的文件，里面配置了css、js、img等资源的输入输出配置，我们可以手动修改它。</p>
-<p>在当前工程目录<code>compass compile</code>，即可编译整个工程的文件；<code>compass watch</code>，即可监听整个工程，在工程文件有变化时，可以立即改变整个工程内对应的文件。例如在sass目录下编写或者改变sass代码后，在css目录下对应的文件即会发生变化。</p>
+<h3 id="pointer-events"><a href="#pointer-events" class="headerlink" title="pointer-events"></a>pointer-events</h3><p>在不考虑SVG元素的情况下，这个属性对普通的元素有两个值：auto(默认值)和none；在将值设置为none的情况下，有两个含义，一是此元素不能不能捕获任何的鼠标事件，而是鼠标会完全忽略测元素，穿够作用于下一层元素。</p>
+<p>看结构代码：</p>
+<pre><code>&lt;body&gt;
+    &lt;div class=&quot;wrap&quot;&gt;
+        &lt;select&gt;
+            &lt;option value=&quot;&quot;&gt;AAA&lt;/option&gt;
+            &lt;option value=&quot;&quot;&gt;BBB&lt;/option&gt;
+            &lt;option value=&quot;&quot;&gt;CCC&lt;/option&gt;
+        &lt;/select&gt;
+        &lt;canvas id=&quot;c&quot; width=&quot;500&quot; height=&quot;400&quot;&gt;什么杰宝浏览器不支持Canvas&lt;/canvas&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;btn-wrap&quot;&gt;
+        &lt;button type=&quot;button&quot;&gt;BUTTON&lt;/button&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        var canvas = document.querySelector(&apos;#c&apos;);
+        var context = canvas.getContext(&apos;2d&apos;);
+        context.fillStyle = &apos;rgba(250,0,0,.5)&apos;;
+        context.fillRect(0,0,500,400);
+
+        var btnWrap = document.querySelector(&apos;.btn-wrap&apos;);
+        btnWrap.addEventListener(&apos;click&apos;,function() {
+            alert(&apos;Btn Wrap&apos;);
+        })
+
+        var btn = document.querySelector(&apos;button&apos;);
+        btn.addEventListener(&apos;click&apos;,function(event) {
+            alert(&apos;Fuck&apos;)
+        })
+    &lt;/script&gt;
+&lt;/body&gt;
+</code></pre><p>浏览器显示如下：<br><img src="http://i.imgur.com/BiKWsdL.png" alt=""></p>
+<p>CSS代码如下：</p>
+<pre><code>.wrap {
+    width: 500px;
+    height: 400px;
+    border: 1px solid #ccc;
+}
+
+select {
+    position: absolute;
+}
+
+#c {
+    position: absolute;
+    pointer-events: none;
+}
+
+.btn-wrap {
+    border: 1px solid yellow;
+    pointer-events: none;
+}
+
+button {
+    width: 100px;
+    height: 30px;
+    margin-top: 10px;
+    pointer-events: auto;
+}
+</code></pre><p>按理说，在这个0.5透明度的红色Canvas的作用下，里面的select应该是不能点击的，但是由于给这个canvas设置了<code>pointer-events: none</code>,鼠标直接穿透了canvas点击到了Select；</p>
+<p>在下边<code>.btn-wrap</code>的地方，已经将btn-wrap设置成了<code>pointer-events: none</code>，所以直接点yellow色内部的区域是不能处罚点击事件的，但是，这个CSS属性并不能阻止冒泡，在点击了button之后，执行了btn绑定的事件代码，就会冒泡到外层直接<code>.btn-wrap</code>绑定的事件代码。</p>
+<p>看具体的代码实例请<a href="http://iamzhaobo.coding.me/Pointer-events-Demo/" target="_blank" rel="external">狠狠的点击这里</a></p>
+<h3 id="selection"><a href="#selection" class="headerlink" title="::selection"></a>::selection</h3><p>selection是一个伪元素（注意不是伪元素），当我们在浏览器中选中文字(以Chrome浏览器为例)，呈现出来的效果是淡蓝底白色文字的，通过配置selection伪元素即可改变文字的样式。<br>看以下代码： </p>
+<pre><code>&lt;html lang=&quot;en&quot;&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;Demo&lt;/title&gt;
+        &lt;style&gt;
+            p::selection {
+                color: red;
+                background: blue;
+                text-decoration: underline;
+            }
+            p::-moz-selection {
+                color: red;
+                background: blue;
+                text-decoration: underline;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;p&gt;我要选中这段文字啦啦啦啦&lt;/p&gt;
+        &lt;div&gt;我要选中这段普通的文字啦啦啦啦&lt;/div&gt;
+    &lt;/body&gt;
+    &lt;/html&gt;
+</code></pre><p>要看效果请<a href="http://iamzhaobo.coding.me/selectionDemo" target="_blank" rel="external">点击这里</a></p>
+<p>需要注意的是不是什么属性都可以网selection这个伪元素里边写，目前它只支持一小部分CSS属性：color, background-color, cursor, outline, text-decoration, text-emphasis-color和text-shadow。</p>
+<h3 id="user-select"><a href="#user-select" class="headerlink" title="user-select"></a>user-select</h3><p>这一个属性也是与选中文本相关的，在网上有些资料为了保护版权，有些就会采用这样一种(比较low)的方法，它有四个属性值none、text、all、element；</p>
+<p>text是它的默认值，表示可以选择文本；<br>none则是需要用到这个属性时最为常用的，表示不能选中文本；<br>all是指能够在单击的时候一并选中当前文字，就好似我们双击选中一个英文单词一样；<br>element表示可以选择文本，但选择范围受元素边界的约束；</p>
+<p><img src="https://i.imgur.com/FEEKnLC.png" alt=""></p>
+<p>这里写了一个<a href="http://iamzhaobo.coding.me/user-select-demo" target="_blank" rel="external">小demo</a>，使用了除默认值之外的三个特性，都非常的简单，但是需要主要的是chrome浏览器目前并不支持element这个值，而且经在支持这个属性的浏览器(IE10+,Firefox4+)上的表现与text并无不同。还没有搞清楚这是什么原因。</p>
 
       
     </div>
@@ -429,9 +516,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/sass/" rel="tag"># sass</a>
+            <a href="/tags/CSS/" rel="tag"># CSS</a>
           
-            <a href="/tags/compass/" rel="tag"># compass</a>
+            <a href="/tags/鲜为人知/" rel="tag"># 鲜为人知</a>
           
         </div>
       
@@ -444,8 +531,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/28/纯CSS美化单选框与复选框/" rel="next" title="纯CSS美化单选框与复选框">
-                <i class="fa fa-chevron-left"></i> 纯CSS美化单选框与复选框
+              <a href="/2017/08/09/Python函数的几种参数类型/" rel="next" title="Python函数的几种参数类型">
+                <i class="fa fa-chevron-left"></i> Python函数的几种参数类型
               </a>
             
           </div>
@@ -453,10 +540,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/06/25/栅格化布局的网页自适应/" rel="prev" title="栅格化布局的网页自适应">
-                栅格化布局的网页自适应 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -613,7 +696,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用"><span class="nav-number">3.</span> <span class="nav-text">使用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#pointer-events"><span class="nav-number">1.</span> <span class="nav-text">pointer-events</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#selection"><span class="nav-number">2.</span> <span class="nav-text">::selection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#user-select"><span class="nav-number">3.</span> <span class="nav-text">user-select</span></a></li></ol></div>
             
 
           </div>
