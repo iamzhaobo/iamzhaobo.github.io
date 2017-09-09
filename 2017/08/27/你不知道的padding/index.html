@@ -90,17 +90,27 @@
 
 
 
-<meta name="description" content="程序媛鼓励师">
+<meta name="description" content="最近在二刷张鑫旭老师的《深入理解CSS系列》，以下内容均是课程笔记与实践，更多详细的内容请看这里.  for blockpadding是盒模型的重要组成部分，对于块级元素来说，又可以分为两类。一是W3C标准盒模型，即在box-sizing: content-box的情况下，padding的增加后会导致整个元素尺寸的增大；二是IE盒模型，即在box-sizing: border-box的情况下，p">
 <meta name="keywords" content="CSS,You know nothing">
 <meta property="og:type" content="article">
 <meta property="og:title" content="你不知道的padding">
 <meta property="og:url" content="http://yoursite.com/2017/08/27/你不知道的padding/index.html">
 <meta property="og:site_name" content="赵波的博客">
-<meta property="og:description" content="程序媛鼓励师">
-<meta property="og:updated_time" content="2017-09-09T12:35:38.180Z">
+<meta property="og:description" content="最近在二刷张鑫旭老师的《深入理解CSS系列》，以下内容均是课程笔记与实践，更多详细的内容请看这里.  for blockpadding是盒模型的重要组成部分，对于块级元素来说，又可以分为两类。一是W3C标准盒模型，即在box-sizing: content-box的情况下，padding的增加后会导致整个元素尺寸的增大；二是IE盒模型，即在box-sizing: border-box的情况下，p">
+<meta property="og:image" content="https://i.imgur.com/6GhgB0q.png">
+<meta property="og:image" content="https://i.imgur.com/ToKo3KZ.png">
+<meta property="og:image" content="https://i.imgur.com/6ulT1jP.png">
+<meta property="og:image" content="https://i.imgur.com/pwgRLkR.png">
+<meta property="og:image" content="https://i.imgur.com/3nKWaTN.png">
+<meta property="og:image" content="https://i.imgur.com/FP9sWe2.png">
+<meta property="og:image" content="https://i.imgur.com/2xH3JVa.png">
+<meta property="og:image" content="https://i.imgur.com/pfGgyiO.png">
+<meta property="og:image" content="https://i.imgur.com/lCIAYis.png">
+<meta property="og:updated_time" content="2017-09-09T13:24:54.025Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="你不知道的padding">
-<meta name="twitter:description" content="程序媛鼓励师">
+<meta name="twitter:description" content="最近在二刷张鑫旭老师的《深入理解CSS系列》，以下内容均是课程笔记与实践，更多详细的内容请看这里.  for blockpadding是盒模型的重要组成部分，对于块级元素来说，又可以分为两类。一是W3C标准盒模型，即在box-sizing: content-box的情况下，padding的增加后会导致整个元素尺寸的增大；二是IE盒模型，即在box-sizing: border-box的情况下，p">
+<meta name="twitter:image" content="https://i.imgur.com/6GhgB0q.png">
 
 
 
@@ -313,9 +323,9 @@
             
             <span class="post-letters-count">
               &nbsp; | &nbsp;
-              <span>0 字</span>
+              <span>1,031 字</span>
               &nbsp; | &nbsp;
-              <span>1 min</span>
+              <span>4 min</span>
             </span>
           
           </span>
@@ -372,7 +382,142 @@
       
 
       
-        
+        <blockquote>
+<p>最近在二刷张鑫旭老师的《深入理解CSS系列》，以下内容均是课程笔记与实践，更多详细的内容请看<a href="http://www.imooc.com/learn/710" target="_blank" rel="external">这里</a>.</p>
+</blockquote>
+<h3 id="for-block"><a href="#for-block" class="headerlink" title="for block"></a>for block</h3><p>padding是盒模型的重要组成部分，对于块级元素来说，又可以分为两类。一是W3C标准盒模型，即在box-sizing: content-box的情况下，padding的增加后会导致整个元素尺寸的增大；二是IE盒模型，即在box-sizing: border-box的情况下，padding的增加不会导致元素尺寸的增加，增加的padding会导致content区域减少。</p>
+<p><img src="https://i.imgur.com/6GhgB0q.png" alt=""></p>
+<p>如上是知乎的主页，利用这一特性，在对盒子进行绘制的时候，一般可以采用IE的盒模型，然后利用padding将四周的留白写出来。</p>
+<p>虽然在border-box的情况下，padding不会对块级元素的尺寸造成影响，但是当水平或垂直方向上的padding之和大于width或height之后，盒子就会“爆炸”了，如这里的<a href="http://iamzhaobo.coding.me/padding_block/" target="_blank" rel="external">例子</a>，当发生了这种情况时，content区域将会变成0，width或height将只有padding决定。</p>
+<p><img src="https://i.imgur.com/ToKo3KZ.png" alt=""></p>
+<h3 id="for-inline"><a href="#for-inline" class="headerlink" title="for inline"></a>for inline</h3><p>在inline下，padding有一个“奇怪”的特征。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Demo&lt;/title&gt;
+    &lt;style&gt;
+        span {
+            background: red;
+            padding: 1px 2px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div&gt;我在上面我在上面我在上面&lt;/div&gt;
+    &lt;div&gt;我在左边&lt;span&gt;MIDDLE&lt;/span&gt;我在右边&lt;/div&gt;
+    &lt;div&gt;我在下面我在下面我在下面&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>如上代码，它在浏览器中体现出来是这样的：</p>
+<p><img src="https://i.imgur.com/6ulT1jP.png" alt=""></p>
+<p>当我们改变它的左右padding值时它又是这样的了</p>
+<p><img src="https://i.imgur.com/pwgRLkR.png" alt=""></p>
+<p>结论就是，在inline元素下，水平的padding会影响尺寸，即会把两边的元素挤开，垂直的padding不会影响吃准，即不会影响它上下的元素，不占据空间，但是，无论是垂直在还是水平方向上，背景色都会受到影响。</p>
+<p>完整代码<a href="http://iamzhaobo.coding.me/padding_inline" target="_blank" rel="external">这里</a></p>
+<h3 id="其他特性"><a href="#其他特性" class="headerlink" title="其他特性"></a>其他特性</h3><p>首先padding不支持负值，它支持百分比，百分比是按照元素的width来计算的，利用padding支持百分比这个属性，我们可以轻易的在一个块级元素下画出一个正方向。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Demo&lt;/title&gt;
+    &lt;style&gt;
+        .outer {
+            width: 200px;
+            height: 500px;
+            border: 3px dotted red;
+        }
+
+        .inner {
+            padding: 50%;
+            background: cyan;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class=&quot;outer&quot;&gt;
+        &lt;div class=&quot;inner&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p><img src="https://i.imgur.com/3nKWaTN.png" alt=""></p>
+<p>完整代码<a href="http://iamzhaobo.coding.me/padding_square" target="_blank" rel="external">这里</a></p>
+<p>原理非常的简单，这里就不解释了。它的应用场景在什么地方呢？移动端！</p>
+<p>如类型微信朋友圈顶部的图片，假如说它是一个正方形，那么利用这一特性，用body为“正方形”的父级，那么我们就可以在任意屏幕的手机上，画出一个正方形。</p>
+<p>另外在inline元素的padding会让strut元素出现，’strut’本质上文本的content area区域的体现，所以可以通过font-size:0让其消失。</p>
+<p>比如下面这个非主流的“登录|注册”写法。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Demo&lt;/title&gt;
+    &lt;style&gt;
+        span {
+                font-size: 0;
+                padding: 11px 6px 2px;
+                border-left: 2px solid;
+                margin-left: 10px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div&gt;登录&lt;span&gt;&lt;/span&gt;注册&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>这是它正常的情况的显示：</p>
+<p><img src="https://i.imgur.com/FP9sWe2.png" alt=""></p>
+<p>当我把font-size:0去掉之后</p>
+<p><img src="https://i.imgur.com/2xH3JVa.png" alt=""></p>
+<p>大家都知道在inline-block下font-size != 0 时会有4px的间距，但是在inline下依然有“不正常”的情况出现，所以在使用这两种元素的时候如果遇到莫名其妙的问题，最好能够font-size:0试一试。</p>
+<p>完整代码<a href="http://iamzhaobo.coding.me/padding_struct" target="_blank" rel="external">这里</a></p>
+<h3 id="小技巧"><a href="#小技巧" class="headerlink" title="小技巧"></a>小技巧</h3><h4 id="汉堡菜单"><a href="#汉堡菜单" class="headerlink" title="汉堡菜单"></a>汉堡菜单</h4><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Demo&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        div {
+            width: 40px;
+            height: 5px;
+            background: red;
+            padding: 10px 0;
+            background-clip: content-box;
+            border-top: 5px solid red;
+            border-bottom: 5px solid red;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p><img src="https://i.imgur.com/pfGgyiO.png" alt=""></p>
+<p>完整代码<a href="http://iamzhaobo.coding.me/pading_ham" target="_blank" rel="external">这里</a></p>
+<h4 id="圆环"><a href="#圆环" class="headerlink" title="圆环"></a>圆环</h4><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Demo&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        div {
+            width: 50px;
+            height: 50px;
+            background: blue;
+            border-radius: 50%;
+            border: 3px solid blue;
+            padding: 5px;
+            background-clip: content-box;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p><img src="https://i.imgur.com/lCIAYis.png" alt=""></p>
+<p>完整代码<a href="http://iamzhaobo.coding.me/padding_circle" target="_blank" rel="external">这里</a></p>
+<p>其实它们的原理都是一样的，利用background-clip:content-box;让其只显示content-area部分，然后padding留出间隙，最外层用border填充。</p>
+
       
     </div>
 
@@ -486,8 +631,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://tva3.sinaimg.cn/crop.0.0.512.512.180/6a53d026jw8f03tm6trj7j20e80e8jrr.jpg"
@@ -578,6 +732,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#for-block"><span class="nav-number">1.</span> <span class="nav-text">for block</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for-inline"><span class="nav-number">2.</span> <span class="nav-text">for inline</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他特性"><span class="nav-number">3.</span> <span class="nav-text">其他特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小技巧"><span class="nav-number">4.</span> <span class="nav-text">小技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#汉堡菜单"><span class="nav-number">4.1.</span> <span class="nav-text">汉堡菜单</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#圆环"><span class="nav-number">4.2.</span> <span class="nav-text">圆环</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
