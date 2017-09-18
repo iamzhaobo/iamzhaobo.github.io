@@ -93,7 +93,7 @@
 <meta name="description" content="程序媛鼓励师">
 <meta property="og:type" content="website">
 <meta property="og:title" content="赵波的博客">
-<meta property="og:url" content="http://yoursite.com/tags/面向对象/index.html">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="赵波的博客">
 <meta property="og:description" content="程序媛鼓励师">
 <meta name="twitter:card" content="summary">
@@ -126,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/面向对象/"/>
+  <link rel="canonical" href="http://yoursite.com/page/2/"/>
 
 
 
 
 
-  <title>标签: 面向对象 | 赵波的博客</title>
+  <title>赵波的博客</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -157,7 +157,9 @@
   
   
 
-  <div class="container sidebar-position-left  ">
+  <div class="container sidebar-position-left 
+   page-home 
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -260,45 +262,234 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h1>面向对象<small>标签</small>
-      </h1>
-    </div>
-
+  <section id="posts" class="posts-expand">
     
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/07/09/JavaScript中的数据属性与访问器属性/" itemprop="url">
-              
-                <span itemprop="name">JavaScript中的数据属性与访问器属性</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-07-09T21:37:43+08:00"
-              content="2017-07-09" >
-          07-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-  </div>
+  
 
   
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/28/webpack之安装与命令行/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="赵波">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://tva3.sinaimg.cn/crop.0.0.512.512.180/6a53d026jw8f03tm6trj7j20e80e8jrr.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="赵波的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/05/28/webpack之安装与命令行/" itemprop="url">webpack之安装与命令行</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-28T10:38:56+08:00">
+                2017-05-28
+              </time>
+            
+
+            
+
+            
+            
+            <span class="post-letters-count">
+              &nbsp; | &nbsp;
+              <span>659 字</span>
+              &nbsp; | &nbsp;
+              <span>3 min</span>
+            </span>
+          
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/框架/" itemprop="url" rel="index">
+                    <span itemprop="name">框架</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="webpack简介"><a href="#webpack简介" class="headerlink" title="webpack简介"></a>webpack简介</h2><p>webpack是一个代码打包器，依附于NPM平台。在前端领域，所谓的代码打包，即是将所有模块化后的代码打包到一个JS文件中，HTML中只需引入这个打包后的文件即可，实际在浏览器中运行的也是这一个文件。</p>
+<p>除了对JS文件进行打包之外，还可以对其他的非JS文件进行打包，如打包后的CSS引入JS文件中。</p>
+<p>当然除了打包这一功能之外，webpack还有其他的功能。在模块化上，它支持CommonJS、AMD、CMD、ES6多种模块化方式，并且可以在一个功能中混用。依附于webpack同样有相当多的插件，用来实现网页的热部署，利用babel来讲ES6转ES5等。</p>
+<p>接下来，将介绍webpack的简单使用与相关命令。</p>
+<h2 id="webpack代码的编写"><a href="#webpack代码的编写" class="headerlink" title="webpack代码的编写"></a>webpack代码的编写</h2><h3 id="新建工程webpack-test"><a href="#新建工程webpack-test" class="headerlink" title="新建工程webpack-test"></a>新建工程webpack-test</h3><p><img src="http://i.imgur.com/hOLORcP.png" alt=""></p>
+<h3 id="利用npm初始化整个工程"><a href="#利用npm初始化整个工程" class="headerlink" title="利用npm初始化整个工程"></a>利用npm初始化整个工程</h3><p>在CMD中</p>
+<pre><code>npm init // 命令行中与填写的字段全部Enter跳过
+</code></pre><p>之后，即可在工程根目录下生成package.json文件<br><img src="http://i.imgur.com/ibqG1s1.png" alt=""></p>
+<h3 id="安装webpack"><a href="#安装webpack" class="headerlink" title="安装webpack"></a>安装webpack</h3><p>在CMD中</p>
+<pre><code>npm install webpack --save-dev
+</code></pre><p>安装完成之后，与webpack相关的依赖将会存放在工程根目录下的node_modules文件夹中</p>
+<h3 id="安装完成"><a href="#安装完成" class="headerlink" title="安装完成"></a>安装完成</h3><p>至此，在当前工程下的webpack环境就安装完成。</p>
+<h2 id="webpack命令"><a href="#webpack命令" class="headerlink" title="webpack命令"></a>webpack命令</h2><h3 id="webpack打包"><a href="#webpack打包" class="headerlink" title="webpack打包"></a>webpack打包</h3><ol>
+<li><p>在根目录下新建文件hello.js</p>
+<pre><code>import &apos;./world.js&apos;
+
+function hello(str) {
+    alert(str);
+}
+
+hello(&apos;Test Webpack&apos;)
+</code></pre></li>
+<li><p>在根目录下新建文件world.js</p>
+<pre><code>function world() {
+    return {
+
+    }
+}
+</code></pre></li>
+<li><p>在CMD中执行命令</p>
+<pre><code>webpack hello.js hello.bundle.js
+</code></pre><p> 执行上述操作后，即可将hello.js和与之关联的文件进行打包，打包文件为hello.bundle.js，这个bundle文件存放在工程的根目录下；</p>
+</li>
+<li><p>通过HTML文件对之进行引用，新建index.html,对hello.bundle.js进行引用</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Demo&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;webpack&lt;/h1&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;hello.bundle.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre></li>
+</ol>
+<p>打开网页后，在浏览器中就会有一个“Test Webpack”的alert。<br><img src="http://i.imgur.com/Um0JMiH.png" alt=""></p>
+<h3 id="webpack打包CSS"><a href="#webpack打包CSS" class="headerlink" title="webpack打包CSS"></a>webpack打包CSS</h3><ol>
+<li><p>新建样式文件style.css</p>
+<pre><code>body {
+    background: red;
+}
+</code></pre></li>
+<li><p>引入需要的依赖</p>
+<p> // 在CMD中<br> npm install style-loader css-loader</p>
+</li>
+<li><p>引入CSS文件</p>
+<ol>
+<li><p>在hello.js中引入</p>
+<pre><code>import &apos;style-loader!css-loader!./style.css&apos;;
+</code></pre></li>
+<li><p>CMD中加载</p>
+<ol>
+<li><p>hello.js</p>
+<pre><code>import &apos;./style.css&apos;;
+</code></pre></li>
+<li><p>CMD命令中</p>
+<pre><code>webpack hello.js hello.bundle.js --module-bind &quot;css=style-loader!css-loader&quot;
+</code></pre></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="热部署"><a href="#热部署" class="headerlink" title="热部署"></a>热部署</h3><pre><code>webpack hello.js hello.bundle.js --watch
+</code></pre><h3 id="观察打包过程"><a href="#观察打包过程" class="headerlink" title="观察打包过程"></a>观察打包过程</h3><pre><code>webpack hello.js hello.bundle.js --progess
+</code></pre><h3 id="列出所有打包的模块-包括处理方式"><a href="#列出所有打包的模块-包括处理方式" class="headerlink" title="列出所有打包的模块(包括处理方式)"></a>列出所有打包的模块(包括处理方式)</h3><pre><code>webpack hello.js hello.bundle.js --display-modules
+</code></pre><h3 id="加载模块的原因"><a href="#加载模块的原因" class="headerlink" title="加载模块的原因"></a>加载模块的原因</h3><pre><code>webpack hello.js hello.bundle.js  --display-reasons
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
 
 
           </div>
